@@ -3,302 +3,373 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meio Ambiente • Ubatuba Reage</title>
-    <meta name="description" content="Notícias sobre preservação ambiental, sustentabilidade e questões ecológicas em Ubatuba.">
+    <title>Meio Ambiente - Ubatuba Reage</title>
+    <meta name="description" content="Notícias sobre meio ambiente, preservação e sustentabilidade em Ubatuba. Acompanhe as questões ambientais da nossa cidade.">
     
-    <!-- CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="../styles.css" rel="stylesheet">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ubatubareage.com.br/categoria/meio-ambiente">
+    <meta property="og:title" content="Meio Ambiente - Ubatuba Reage">
+    <meta property="og:description" content="Notícias sobre meio ambiente, preservação e sustentabilidade em Ubatuba.">
+    <meta property="og:image" content="https://ubatubareage.com.br/assets/og-meio-ambiente.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://ubatubareage.com.br/categoria/meio-ambiente">
+    <meta property="twitter:title" content="Meio Ambiente - Ubatuba Reage">
+    <meta property="twitter:description" content="Notícias sobre meio ambiente, preservação e sustentabilidade em Ubatuba.">
+    <meta property="twitter:image" content="https://ubatubareage.com.br/assets/og-meio-ambiente.jpg">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
     
     <!-- Fonts -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:wght@400;500;600;700;800&display=swap"></noscript>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link href="../styles.css" rel="stylesheet">
 </head>
 <body>
     <!-- Header -->
-    <header class="header-main header-dark">
-        <div class="container-fluid">
-            <div class="row align-items-center justify-content-between">
-                <div class="col-auto">
-                    <div class="header-logo">
-                        <h1 class="m-0">
-                            <a href="../index.html" class="custom-logo-link" rel="home">
-                                <span class="brand-logo" aria-label="Ubatuba Reage">
-                                    <span class="l1">Ubatuba</span>
-                                    <span class="l2">Reage</span>
-                                </span>
-                            </a>
-                        </h1>
-                    </div>
+    <header class="header-main bg-dark sticky-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark py-3">
+                <div class="d-flex align-items-center">
+                    <button class="navbar-toggler border-0 p-0 me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu">
+                        <div class="hamburger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </button>
+                    
+                    <a class="navbar-brand d-flex align-items-center" href="../index.html">
+                        <div class="logo-text">
+                            <span class="logo-main">Ubatuba Reage</span>
+                        </div>
+                    </a>
                 </div>
-                <div class="col-auto">
-                    <div class="header-actions d-flex align-items-center gap-3">
-                        <a href="../busca.html" class="btn btn-search d-none d-lg-flex text-white-50" aria-label="Buscar">
-                            <i class="bi bi-search"></i>
-                        </a>
-                        <a href="../apoie.html" class="btn btn-support btn-primary text-uppercase fw-bold px-3 py-2 d-none d-lg-inline-block">
-                            Quero Apoiar
-                        </a>
-                        <button class="btn btn-toggle-menu d-flex align-items-center gap-2 p-0 text-white" 
-                                type="button" 
-                                data-bs-toggle="offcanvas" 
-                                data-bs-target="#offcanvasMenu" 
-                                aria-controls="offcanvasMenu"
-                                aria-label="Menu">
-                            <div class="hamburger-icon">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-                        </button>
-                    </div>
+                
+                <div class="d-flex align-items-center">
+                    <button class="btn btn-link text-white p-0 me-3" type="button">
+                        <i class="bi bi-search fs-5"></i>
+                    </button>
+                    <a href="../apoie.html" class="btn btn-primary btn-sm">Apoie</a>
                 </div>
-            </div>
+            </nav>
         </div>
     </header>
 
-    <!-- Off-canvas Menu -->
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu">
-        <div class="offcanvas-header">
-            <a href="../index.html" class="custom-logo-link" rel="home">
-                <span class="brand-logo" aria-label="Ubatuba Reage">
-                    <span class="l1">Ubatuba</span>
-                    <span class="l2">Reage</span>
-                </span>
-            </a>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    <!-- Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="offcanvasMenu">
+        <div class="offcanvas-header border-bottom border-secondary">
+            <h5 class="offcanvas-title">Menu</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
         </div>
         <div class="offcanvas-body">
-            <nav class="menu-navigation">
-                <ul class="list-unstyled">
-                    <li><a href="../index.html" class="nav-link">Início</a></li>
-                    <li><a href="cidade.html" class="nav-link">Cidade</a></li>
-                    <li><a href="meio-ambiente.html" class="nav-link active">Meio Ambiente</a></li>
-                    <li><a href="cultura.html" class="nav-link">Cultura</a></li>
-                    <li><a href="../fontes.html" class="nav-link">Seja nossa fonte</a></li>
-                    <li><a href="../sobre.html" class="nav-link">Quem Somos</a></li>
-                </ul>
+            <nav class="nav flex-column">
+                <a class="nav-link text-white py-2" href="../index.html">Início</a>
+                <a class="nav-link text-white py-2" href="../categoria/cidade.html">Cidade</a>
+                <a class="nav-link text-white py-2 active" href="../categoria/meio-ambiente.html">Meio Ambiente</a>
+                <a class="nav-link text-white py-2" href="../categoria/cultura.html">Cultura</a>
+                <a class="nav-link text-white py-2" href="../categoria/praias.html">Praias</a>
+                <hr class="my-3">
+                <a class="nav-link text-white py-2" href="../sobre.html">Sobre</a>
+                <a class="nav-link text-white py-2" href="../fontes.html">Seja nossa fonte</a>
+                <a class="nav-link text-white py-2" href="../contato.html">Contato</a>
+                <!-- Auth links will be dynamically inserted here by auth.js -->
+                <div id="auth-menu-items"></div>
             </nav>
         </div>
     </div>
 
     <!-- Main Content -->
-    <main id="main-content" class="main-content" style="background: #0e0e0e;">
-        <!-- Breadcrumb -->
-        <section class="py-3" style="background: #111; border-bottom: 1px solid rgba(255,255,255,0.08);">
-            <div class="container">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb mb-0">
-                        <li class="breadcrumb-item"><a href="../index.html" class="text-white-50">Início</a></li>
-                        <li class="breadcrumb-item active text-white" aria-current="page">Meio Ambiente</li>
-                    </ol>
-                </nav>
-            </div>
-        </section>
+    <main class="py-4">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb" class="mb-4">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="../index.html">Início</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Meio Ambiente</li>
+                </ol>
+            </nav>
 
-        <!-- Category Header -->
-        <section class="py-5" style="color: #fff;">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-8">
-                        <span class="badge bg-success px-3 py-2 text-uppercase fw-bold mb-3">Meio Ambiente</span>
-                        <h1 class="display-5 fw-bold mb-3">Sustentabilidade e Preservação</h1>
-                        <p class="lead text-white-50">
-                            Acompanhe as questões ambientais de Ubatuba: preservação das praias, mata atlântica, 
-                            sustentabilidade e ações de proteção ao meio ambiente.
+            <!-- Category Header -->
+            <div class="row mb-5">
+                <div class="col-lg-8">
+                    <div class="category-header">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="bi bi-tree-fill text-success me-2 fs-3"></i>
+                            <h1 class="h2 mb-0">Meio Ambiente</h1>
+                        </div>
+                        <p class="lead text-muted">
+                            Acompanhe as questões ambientais de Ubatuba: preservação da Mata Atlântica, 
+                            proteção das praias, sustentabilidade urbana e denúncias de crimes ambientais.
                         </p>
                     </div>
-                    <div class="col-md-4 text-md-end">
-                        <div class="d-flex align-items-center gap-2 text-white-50">
-                            <i class="bi bi-tree fs-1"></i>
-                            <div>
-                                <div class="fw-bold text-white">8</div>
-                                <div class="small">matérias</div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="alert alert-success">
+                        <h6 class="alert-heading"><i class="bi bi-leaf me-1"></i> Dica Sustentável</h6>
+                        <p class="mb-0">Evite usar produtos descartáveis nas praias. Leve sua própria garrafa d'água e utensílios reutilizáveis!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Articles Grid -->
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="row g-4">
+                        <!-- Article 1 -->
+                        <div class="col-md-6">
+                            <article class="card h-100 border-0 shadow-sm">
+                                <div class="position-relative">
+                                    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                                         class="card-img-top" alt="Mata Atlântica em Ubatuba" loading="lazy">
+                                    <span class="badge bg-success position-absolute top-0 start-0 m-2">Meio Ambiente</span>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <a href="../materia/mata-atlantica-preservacao.html" class="text-decoration-none text-dark">
+                                            Projeto de reflorestamento recupera 50 hectares da Mata Atlântica
+                                        </a>
+                                    </h5>
+                                    <p class="card-text text-muted">
+                                        Iniciativa conjunta entre prefeitura e ONGs ambientais já plantou mais de 10 mil mudas nativas na região do Sertão da Quina.
+                                    </p>
+                                    <div class="d-flex justify-content-between align-items-center text-muted small">
+                                        <span>Por Ana Silva</span>
+                                        <span>2 dias atrás</span>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Article 2 -->
+                        <div class="col-md-6">
+                            <article class="card h-100 border-0 shadow-sm">
+                                <div class="position-relative">
+                                    <img src="https://images.unsplash.com/photo-1583212292454-1fe6229603b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                                         class="card-img-top" alt="Limpeza de praia" loading="lazy">
+                                    <span class="badge bg-success position-absolute top-0 start-0 m-2">Meio Ambiente</span>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <a href="../materia/mutirao-limpeza-praias.html" class="text-decoration-none text-dark">
+                                            Mutirão de limpeza remove 2 toneladas de lixo das praias
+                                        </a>
+                                    </h5>
+                                    <p class="card-text text-muted">
+                                        Ação voluntária mobilizou mais de 200 pessoas em 15 praias da cidade durante o final de semana.
+                                    </p>
+                                    <div class="d-flex justify-content-between align-items-center text-muted small">
+                                        <span>Por Carlos Mendes</span>
+                                        <span>4 dias atrás</span>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Article 3 -->
+                        <div class="col-md-6">
+                            <article class="card h-100 border-0 shadow-sm">
+                                <div class="position-relative">
+                                    <img src="https://images.unsplash.com/photo-1569163139394-de4e4f43e4e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                                         class="card-img-top" alt="Reciclagem" loading="lazy">
+                                    <span class="badge bg-success position-absolute top-0 start-0 m-2">Meio Ambiente</span>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <a href="../materia/coleta-seletiva-expansao.html" class="text-decoration-none text-dark">
+                                            Coleta seletiva será expandida para todos os bairros até 2025
+                                        </a>
+                                    </h5>
+                                    <p class="card-text text-muted">
+                                        Prefeitura anuncia investimento de R$ 2 milhões para universalizar a coleta seletiva na cidade.
+                                    </p>
+                                    <div class="d-flex justify-content-between align-items-center text-muted small">
+                                        <span>Por Maria Santos</span>
+                                        <span>1 semana atrás</span>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Article 4 -->
+                        <div class="col-md-6">
+                            <article class="card h-100 border-0 shadow-sm">
+                                <div class="position-relative">
+                                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                                         class="card-img-top" alt="Água limpa" loading="lazy">
+                                    <span class="badge bg-success position-absolute top-0 start-0 m-2">Meio Ambiente</span>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <a href="../materia/qualidade-agua-praias.html" class="text-decoration-none text-dark">
+                                            Relatório aponta melhoria na qualidade da água das praias
+                                        </a>
+                                    </h5>
+                                    <p class="card-text text-muted">
+                                        CETESB divulga dados que mostram redução de 30% na poluição marinha em comparação ao ano passado.
+                                    </p>
+                                    <div class="d-flex justify-content-between align-items-center text-muted small">
+                                        <span>Por João Oliveira</span>
+                                        <span>1 semana atrás</span>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <nav aria-label="Navegação de páginas" class="mt-5">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item disabled">
+                                <span class="page-link">Anterior</span>
+                            </li>
+                            <li class="page-item active">
+                                <span class="page-link">1</span>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="?page=2">2</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="?page=3">3</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="?page=2">Próxima</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="col-lg-4">
+                    <div class="sticky-top" style="top: 100px;">
+                        <!-- Newsletter -->
+                        <div class="card border-0 shadow-sm mb-4">
+                            <div class="card-body">
+                                <h6 class="card-title">📧 Newsletter</h6>
+                                <p class="card-text small text-muted">Receba as principais notícias ambientais de Ubatuba.</p>
+                                <form>
+                                    <div class="input-group">
+                                        <input type="email" class="form-control form-control-sm" placeholder="Seu email">
+                                        <button class="btn btn-primary btn-sm" type="submit">Assinar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Environmental Tips -->
+                        <div class="card border-0 shadow-sm mb-4">
+                            <div class="card-body">
+                                <h6 class="card-title">🌱 Dicas Sustentáveis</h6>
+                                <div class="list-group list-group-flush">
+                                    <div class="list-group-item border-0 px-0">
+                                        <small class="text-muted">
+                                            <strong>Economia de água:</strong> Uma torneira pingando desperdiça até 46 litros por dia.
+                                        </small>
+                                    </div>
+                                    <div class="list-group-item border-0 px-0">
+                                        <small class="text-muted">
+                                            <strong>Compostagem:</strong> Transforme restos orgânicos em adubo natural.
+                                        </small>
+                                    </div>
+                                    <div class="list-group-item border-0 px-0">
+                                        <small class="text-muted">
+                                            <strong>Transporte:</strong> Use bike ou caminhe para trajetos curtos.
+                                        </small>
+                                    </div>
+                                </div>
+                                <a href="../dicas-sustentabilidade.html" class="btn btn-outline-success btn-sm w-100 mt-2">
+                                    Ver todas as dicas
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Related Categories -->
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body">
+                                <h6 class="card-title">📂 Outras Categorias</h6>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <a href="cidade.html" class="badge bg-primary text-decoration-none">Cidade</a>
+                                    <a href="cultura.html" class="badge bg-warning text-decoration-none">Cultura</a>
+                                    <a href="praias.html" class="badge bg-info text-decoration-none">Praias</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- Articles List -->
-        <section class="py-5">
-            <div class="container">
-                <div class="row g-4">
-                    <!-- Featured Article -->
-                    <div class="col-12">
-                        <article class="row g-4 p-4 rounded" style="background: #111; border: 1px solid rgba(255,255,255,0.08);">
-                            <div class="col-md-5">
-                                <img src="https://picsum.photos/500/300?random=402" 
-                                     alt="Bioluminescência nas praias" 
-                                     class="img-fluid rounded">
-                            </div>
-                            <div class="col-md-7">
-                                <span class="badge bg-success mb-2">Destaque</span>
-                                <h2 class="h4 fw-bold text-white mb-3">
-                                    <a href="../materia/ondas-azuis-bioluminescencia.html" class="text-decoration-none text-white">
-                                        Ondas azuis: moradores registram bioluminescência nas praias
-                                    </a>
-                                </h2>
-                                <p class="text-white-50 mb-3">
-                                    Fenômeno natural raro voltou a ser observado nas praias de Ubatuba, atraindo curiosos e sendo amplamente compartilhado nas redes sociais.
-                                </p>
-                                <div class="d-flex align-items-center gap-3 text-white-50 small">
-                                    <span>Por <strong>Redação Ubatuba Reage</strong></span>
-                                    <span>•</span>
-                                    <time datetime="2025-03-15">março de 2025</time>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-
-                    <!-- Regular Articles -->
-                    <div class="col-md-6">
-                        <article class="card bg-dark border-0 h-100" style="border: 1px solid rgba(255,255,255,0.08) !important;">
-                            <img src="https://picsum.photos/400/250?random=601" class="card-img-top" alt="Limpeza de praia">
-                            <div class="card-body">
-                                <span class="badge bg-success mb-2">Limpeza</span>
-                                <h3 class="card-title h5 text-white">
-                                    <a href="#" class="text-decoration-none text-white">
-                                        Mutirão de limpeza retira 2 toneladas de lixo da Praia Grande
-                                    </a>
-                                </h3>
-                                <p class="card-text text-white-50">
-                                    Ação voluntária mobilizou mais de 200 pessoas em prol da preservação ambiental.
-                                </p>
-                                <div class="d-flex align-items-center gap-2 text-white-50 small">
-                                    <span>Por <strong>Redação</strong></span>
-                                    <span>•</span>
-                                    <time datetime="2025-07-15">julho de 2025</time>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="col-md-6">
-                        <article class="card bg-dark border-0 h-100" style="border: 1px solid rgba(255,255,255,0.08) !important;">
-                            <img src="https://picsum.photos/400/250?random=602" class="card-img-top" alt="Mata Atlântica">
-                            <div class="card-body">
-                                <span class="badge bg-warning mb-2">Preservação</span>
-                                <h3 class="card-title h5 text-white">
-                                    <a href="#" class="text-decoration-none text-white">
-                                        Novo projeto visa reflorestar 50 hectares de Mata Atlântica
-                                    </a>
-                                </h3>
-                                <p class="card-text text-white-50">
-                                    Iniciativa conta com parceria entre prefeitura, ONGs e empresas locais.
-                                </p>
-                                <div class="d-flex align-items-center gap-2 text-white-50 small">
-                                    <span>Por <strong>Redação</strong></span>
-                                    <span>•</span>
-                                    <time datetime="2025-06-20">junho de 2025</time>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="col-md-6">
-                        <article class="card bg-dark border-0 h-100" style="border: 1px solid rgba(255,255,255,0.08) !important;">
-                            <img src="https://picsum.photos/400/250?random=603" class="card-img-top" alt="Fiscalização ambiental">
-                            <div class="card-body">
-                                <span class="badge bg-danger mb-2">Fiscalização</span>
-                                <h3 class="card-title h5 text-white">
-                                    <a href="#" class="text-decoration-none text-white">
-                                        Ibama aplica multa de R$ 50 mil por construção irregular
-                                    </a>
-                                </h3>
-                                <p class="card-text text-white-50">
-                                    Obra em área de preservação permanente foi embargada após denúncia.
-                                </p>
-                                <div class="d-flex align-items-center gap-2 text-white-50 small">
-                                    <span>Por <strong>Redação</strong></span>
-                                    <span>•</span>
-                                    <time datetime="2025-05-10">maio de 2025</time>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="col-md-6">
-                        <article class="card bg-dark border-0 h-100" style="border: 1px solid rgba(255,255,255,0.08) !important;">
-                            <img src="https://picsum.photos/400/250?random=604" class="card-img-top" alt="Reciclagem">
-                            <div class="card-body">
-                                <span class="badge bg-info mb-2">Sustentabilidade</span>
-                                <h3 class="card-title h5 text-white">
-                                    <a href="#" class="text-decoration-none text-white">
-                                        Programa de coleta seletiva expande para mais bairros
-                                    </a>
-                                </h3>
-                                <p class="card-text text-white-50">
-                                    Iniciativa já atende 60% da cidade e deve chegar a 100% até dezembro.
-                                </p>
-                                <div class="d-flex align-items-center gap-2 text-white-50 small">
-                                    <span>Por <strong>Redação</strong></span>
-                                    <span>•</span>
-                                    <time datetime="2025-04-25">abril de 2025</time>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-
-                <!-- Pagination -->
-                <nav aria-label="Navegação de páginas" class="mt-5">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
-                            <span class="page-link bg-dark border-secondary text-white-50">Anterior</span>
-                        </li>
-                        <li class="page-item active">
-                            <span class="page-link bg-primary border-primary">1</span>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link bg-dark border-secondary text-white" href="#">2</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link bg-dark border-secondary text-white" href="#">Próxima</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </section>
-
-        <!-- Environmental Tips -->
-        <section class="py-5" style="background: linear-gradient(135deg, #28a745 0%, #20c997 100%);">
-            <div class="container text-center">
-                <h3 class="h4 fw-bold mb-3 text-white">Preservar Ubatuba é responsabilidade de todos</h3>
-                <p class="mb-4 text-white">Conheça nossas dicas de sustentabilidade e ajude a proteger nossa cidade.</p>
-                <a href="../dicas-sustentabilidade.html" class="btn btn-light btn-lg fw-bold px-4">
-                    <i class="bi bi-lightbulb me-2"></i>
-                    Ver Dicas Ambientais
-                </a>
-            </div>
-        </section>
+        </div>
     </main>
 
     <!-- Footer -->
-    <footer class="footer-main bg-dark text-white py-4">
+    <footer class="footer-main bg-dark text-white py-5 mt-5">
         <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h6 class="text-white mb-3">Ubatuba Reage</h6>
+                    <p class="text-light">
+                        Movimento cidadão independente. A voz da comunidade de Ubatuba.
+                    </p>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h6 class="text-white mb-3">Navegação</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="../index.html" class="text-light text-decoration-none">Início</a></li>
+                        <li><a href="../sobre.html" class="text-light text-decoration-none">Sobre</a></li>
+                        <li><a href="../fontes.html" class="text-light text-decoration-none">Seja nossa fonte</a></li>
+                        <li><a href="../contato.html" class="text-light text-decoration-none">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h6 class="text-white mb-3">Categorias</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="cidade.html" class="text-light text-decoration-none">Cidade</a></li>
+                        <li><a href="meio-ambiente.html" class="text-light text-decoration-none">Meio Ambiente</a></li>
+                        <li><a href="cultura.html" class="text-light text-decoration-none">Cultura</a></li>
+                        <li><a href="praias.html" class="text-light text-decoration-none">Praias</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h6 class="text-white mb-3">Redes Sociais</h6>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-light"><i class="bi bi-facebook fs-5"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-instagram fs-5"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-twitter fs-5"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-whatsapp fs-5"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-4">
+            
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <p class="mb-0 text-muted">© 2025 Ubatuba Reage. Todos os direitos reservados.</p>
+                    <p class="mb-0 text-muted">
+                        © 2024 Ubatuba Reage. Todos os direitos reservados.
+                    </p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <div class="d-flex gap-3 justify-content-md-end justify-content-start">
-                        <a href="../sobre.html" class="text-white-50 text-decoration-none">Sobre</a>
-                        <a href="../contato.html" class="text-white-50 text-decoration-none">Contato</a>
-                        <a href="../privacidade.html" class="text-white-50 text-decoration-none">Privacidade</a>
-                    </div>
+                    <a href="../apoie.html" class="btn btn-primary btn-sm">Apoie nosso movimento</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Identity & Auth -->
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom Scripts -->
+    <script src="../script.js"></script>
+    <script src="../js/analytics.js"></script>
+    
+    <!-- Netlify Identity -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <script src="../js/auth.js"></script>
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../script.js"></script>
 </body>
 </html>
