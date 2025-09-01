@@ -1,0 +1,27 @@
+[build]
+  publish = "."
+  command = ""
+
+[dev]
+  framework = "#static"
+  command = ""
+  targetPort = 5500
+  port = 8888
+  publish = "."
+  autoLaunch = true
+
+# Optional: Redirect /admin to the CMS
+[[redirects]]
+  from = "/admin"
+  to = "/admin/index.html"
+  status = 301
+
+# Security headers (basic)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+

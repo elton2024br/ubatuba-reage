@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cidade • Ubatuba Reage</title>
+    <meta name="description" content="Acompanhe as principais notícias sobre administração pública, política local e questões urbanas de Ubatuba.">
+    
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="../styles.css" rel="stylesheet">
+    
+    <!-- Fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:wght@400;500;600;700;800&display=swap"></noscript>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header-main header-dark">
+        <div class="container-fluid">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-auto">
+                    <div class="header-logo">
+                        <h1 class="m-0">
+                            <a href="../index.html" class="custom-logo-link" rel="home">
+                                <span class="brand-logo" aria-label="Ubatuba Reage">
+                                    <span class="l1">Ubatuba</span>
+                                    <span class="l2">Reage</span>
+                                </span>
+                            </a>
+                        </h1>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <div class="header-actions d-flex align-items-center gap-3">
+                        <button class="btn btn-search d-none d-lg-flex text-white-50" aria-label="Buscar">
+                            <i class="bi bi-search"></i>
+                        </button>
+                        <a href="../apoie.html" class="btn btn-support btn-primary text-uppercase fw-bold px-3 py-2 d-none d-lg-inline-block">
+                            Quero Apoiar
+                        </a>
+                        <button class="btn btn-toggle-menu d-flex align-items-center gap-2 p-0 text-white" 
+                                type="button" 
+                                data-bs-toggle="offcanvas" 
+                                data-bs-target="#offcanvasMenu" 
+                                aria-controls="offcanvasMenu"
+                                aria-label="Menu">
+                            <div class="hamburger-icon">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Off-canvas Menu -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu">
+        <div class="offcanvas-header">
+            <a href="../index.html" class="custom-logo-link" rel="home">
+                <span class="brand-logo" aria-label="Ubatuba Reage">
+                    <span class="l1">Ubatuba</span>
+                    <span class="l2">Reage</span>
+                </span>
+            </a>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="menu-navigation">
+                <ul class="list-unstyled">
+                    <li><a href="../index.html" class="nav-link">Início</a></li>
+                    <li><a href="cidade.html" class="nav-link active">Cidade</a></li>
+                    <li><a href="meio-ambiente.html" class="nav-link">Meio Ambiente</a></li>
+                    <li><a href="cultura.html" class="nav-link">Cultura</a></li>
+                    <li><a href="../fontes.html" class="nav-link">Seja nossa fonte</a></li>
+                    <li><a href="../sobre.html" class="nav-link">Quem Somos</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main id="main-content" class="main-content" style="background: #0e0e0e;">
+        <!-- Breadcrumb -->
+        <section class="py-3" style="background: #111; border-bottom: 1px solid rgba(255,255,255,0.08);">
+            <div class="container">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="../index.html" class="text-white-50">Início</a></li>
+                        <li class="breadcrumb-item active text-white" aria-current="page">Cidade</li>
+                    </ol>
+                </nav>
+            </div>
+        </section>
+
+        <!-- Category Header -->
+        <section class="py-5" style="color: #fff;">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <span class="badge bg-primary px-3 py-2 text-uppercase fw-bold mb-3">Cidade</span>
+                        <h1 class="display-5 fw-bold mb-3">Notícias da Cidade</h1>
+                        <p class="lead text-white-50">
+                            Acompanhe as principais notícias sobre administração pública, política local e questões urbanas que afetam o dia a dia dos moradores de Ubatuba.
+                        </p>
+                    </div>
+                    <div class="col-md-4 text-md-end">
+                        <div class="d-flex align-items-center gap-2 text-white-50">
+                            <i class="bi bi-newspaper fs-1"></i>
+                            <div>
+                                <div class="fw-bold text-white">12</div>
+                                <div class="small">matérias</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Articles List -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row g-4">
+                    <!-- Featured Article -->
+                    <div class="col-12">
+                        <article class="row g-4 p-4 rounded" style="background: #111; border: 1px solid rgba(255,255,255,0.08);">
+                            <div class="col-md-5">
+                                <img src="https://picsum.photos/500/300?random=301" 
+                                     alt="Prefeitura notifica plataformas por fake news" 
+                                     class="img-fluid rounded">
+                            </div>
+                            <div class="col-md-7">
+                                <span class="badge bg-primary mb-2">Destaque</span>
+                                <h2 class="h4 fw-bold text-white mb-3">
+                                    <a href="../materia/prefeitura-notifica-fake-news.html" class="text-decoration-none text-white">
+                                        Prefeitura de Ubatuba notifica Google e Meta por conteúdos falsos sobre praias
+                                    </a>
+                                </h2>
+                                <p class="text-white-50 mb-3">
+                                    Administração municipal pediu a remoção de publicações com informações não comprovadas sobre uma suposta "bactéria necrosante", que causaram prejuízos ao turismo local.
+                                </p>
+                                <div class="d-flex align-items-center gap-3 text-white-50 small">
+                                    <span>Por <strong>Redação Ubatuba Reage</strong></span>
+                                    <span>•</span>
+                                    <time datetime="2025-07-10">10 de julho, 2025</time>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Regular Articles -->
+                    <div class="col-md-6">
+                        <article class="card bg-dark border-0 h-100" style="border: 1px solid rgba(255,255,255,0.08) !important;">
+                            <img src="https://picsum.photos/400/250?random=401" class="card-img-top" alt="Pavimentação em Ubatuba">
+                            <div class="card-body">
+                                <span class="badge bg-primary mb-2">Infraestrutura</span>
+                                <h3 class="card-title h5 text-white">
+                                    <a href="../materia/pavimentacao-seis-bairros.html" class="text-decoration-none text-white">
+                                        Prefeitura abre licitação para pavimentação em seis bairros
+                                    </a>
+                                </h3>
+                                <p class="card-text text-white-50">
+                                    Investimento de R$ 2 milhões vai beneficiar moradores de diferentes regiões da cidade com melhorias na infraestrutura viária.
+                                </p>
+                                <div class="d-flex align-items-center gap-2 text-white-50 small">
+                                    <span>Por <strong>Redação</strong></span>
+                                    <span>•</span>
+                                    <time datetime="2025-07-20">julho de 2025</time>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-md-6">
+                        <article class="card bg-dark border-0 h-100" style="border: 1px solid rgba(255,255,255,0.08) !important;">
+                            <img src="https://picsum.photos/400/250?random=501" class="card-img-top" alt="Defesa Civil Ubatuba">
+                            <div class="card-body">
+                                <span class="badge bg-success mb-2">Defesa Civil</span>
+                                <h3 class="card-title h5 text-white">
+                                    <a href="../materia/aguas-baixam-moradores-retornam.html" class="text-decoration-none text-white">
+                                        Águas baixam e moradores começam a retornar após chuvas
+                                    </a>
+                                </h3>
+                                <p class="card-text text-white-50">
+                                    Defesa Civil liberou acesso ao bairro Folha Seca após reparos na ponte sobre o Rio Escuro.
+                                </p>
+                                <div class="d-flex align-items-center gap-2 text-white-50 small">
+                                    <span>Por <strong>Redação</strong></span>
+                                    <span>•</span>
+                                    <time datetime="2025-04-06">6 de abril, 2025</time>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-md-6">
+                        <article class="card bg-dark border-0 h-100" style="border: 1px solid rgba(255,255,255,0.08) !important;">
+                            <img src="https://picsum.photos/400/250?random=502" class="card-img-top" alt="Câmara Municipal Ubatuba">
+                            <div class="card-body">
+                                <span class="badge bg-warning mb-2">Política</span>
+                                <h3 class="card-title h5 text-white">
+                                    <a href="#" class="text-decoration-none text-white">
+                                        Câmara aprova novo regimento interno para sessões
+                                    </a>
+                                </h3>
+                                <p class="card-text text-white-50">
+                                    Mudanças visam modernizar os procedimentos e dar mais transparência às decisões do legislativo municipal.
+                                </p>
+                                <div class="d-flex align-items-center gap-2 text-white-50 small">
+                                    <span>Por <strong>Redação</strong></span>
+                                    <span>•</span>
+                                    <time datetime="2025-06-15">15 de junho, 2025</time>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-md-6">
+                        <article class="card bg-dark border-0 h-100" style="border: 1px solid rgba(255,255,255,0.08) !important;">
+                            <img src="https://picsum.photos/400/250?random=503" class="card-img-top" alt="Orçamento Ubatuba">
+                            <div class="card-body">
+                                <span class="badge bg-info mb-2">Orçamento</span>
+                                <h3 class="card-title h5 text-white">
+                                    <a href="#" class="text-decoration-none text-white">
+                                        Prefeitura divulga relatório de execução orçamentária
+                                    </a>
+                                </h3>
+                                <p class="card-text text-white-50">
+                                    Documento mostra aplicação de recursos públicos no primeiro semestre de 2025 com foco em transparência.
+                                </p>
+                                <div class="d-flex align-items-center gap-2 text-white-50 small">
+                                    <span>Por <strong>Redação</strong></span>
+                                    <span>•</span>
+                                    <time datetime="2025-06-01">1 de junho, 2025</time>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <nav aria-label="Navegação de páginas" class="mt-5">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <span class="page-link bg-dark border-secondary text-white-50">Anterior</span>
+                        </li>
+                        <li class="page-item active">
+                            <span class="page-link bg-primary border-primary">1</span>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link bg-dark border-secondary text-white" href="#">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link bg-dark border-secondary text-white" href="#">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link bg-dark border-secondary text-white" href="#">Próxima</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+
+        <!-- CTA Newsletter -->
+        <section class="py-5" style="background: linear-gradient(135deg, var(--color-primary) 0%, #0056b3 100%);">
+            <div class="container text-center">
+                <h3 class="h4 fw-bold mb-3 text-white">Não perca nenhuma notícia da cidade</h3>
+                <p class="mb-4 text-white">Receba as principais atualizações sobre Ubatuba direto no seu e-mail.</p>
+                <a href="../index.html#newsletter" class="btn btn-light btn-lg fw-bold px-4">
+                    <i class="bi bi-envelope me-2"></i>
+                    Assinar Newsletter
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-main bg-dark text-white py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0 text-muted">© 2025 Ubatuba Reage. Todos os direitos reservados.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="d-flex gap-3 justify-content-md-end justify-content-start">
+                        <a href="../sobre.html" class="text-white-50 text-decoration-none">Sobre</a>
+                        <a href="../contato.html" class="text-white-50 text-decoration-none">Contato</a>
+                        <a href="../privacidade.html" class="text-white-50 text-decoration-none">Privacidade</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Identity & Auth -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script src="../js/auth.js"></script>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../script.js"></script>
+</body>
+</html>

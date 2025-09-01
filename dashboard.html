@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard • Ubatuba Reage</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body style="background:#0e0e0e;color:#fff;">
+    <header class="header-main header-dark">
+        <div class="container-fluid">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-auto">
+                    <div class="header-logo">
+                        <h1 class="m-0">
+                            <a href="index.html" class="custom-logo-link" rel="home">
+                                <span class="brand-logo" aria-label="Ubatuba Reage">
+                                    <span class="l1">Ubatuba</span>
+                                    <span class="l2">Reage</span>
+                                </span>
+                            </a>
+                        </h1>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <div class="header-actions d-flex align-items-center gap-3">
+                        <a href="#" class="btn btn-toggle-menu d-flex align-items-center gap-2 p-0 text-white">
+                            <i class="bi bi-speedometer2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="py-5">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="h4 fw-bold">Dashboard</h2>
+                <div class="text-white-50 small">Apenas Admin/Editor</div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card bg-dark border-0" style="border:1px solid rgba(255,255,255,0.08) !important;">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <div class="text-white-50 small">Rascunhos</div>
+                                <i class="bi bi-file-earmark-text text-primary"></i>
+                            </div>
+                            <div class="h3 fw-bold">—</div>
+                            <div class="text-white-50 small">Matérias aguardando revisão</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-dark border-0" style="border:1px solid rgba(255,255,255,0.08) !important;">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <div class="text-white-50 small">Publicadas</div>
+                                <i class="bi bi-newspaper text-success"></i>
+                            </div>
+                            <div class="h3 fw-bold">—</div>
+                            <div class="text-white-50 small">No ar</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-dark border-0" style="border:1px solid rgba(255,255,255,0.08) !important;">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <div class="text-white-50 small">Submissões</div>
+                                <i class="bi bi-inbox text-warning"></i>
+                            </div>
+                            <div class="h3 fw-bold">—</div>
+                            <div class="text-white-50 small">Últimas do Netlify Forms</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4 mt-1">
+                <div class="col-md-6">
+                    <div class="card bg-dark border-0" style="border:1px solid rgba(255,255,255,0.08) !important;">
+                        <div class="card-header bg-transparent border-0 d-flex align-items-center justify-content-between">
+                            <span class="fw-bold">Ações rápidas</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex gap-2 flex-wrap">
+                                <a href="admin/index.html#/collections/articles/new" class="btn btn-primary btn-sm"><i class="bi bi-plus-lg me-1"></i> Nova matéria</a>
+                                <a href="admin/index.html#/collections/articles" class="btn btn-outline-light btn-sm">Revisar matérias</a>
+                                <a href="admin/index.html" class="btn btn-outline-light btn-sm">Abrir CMS</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card bg-dark border-0" style="border:1px solid rgba(255,255,255,0.08) !important;">
+                        <div class="card-header bg-transparent border-0 d-flex align-items-center justify-content-between">
+                            <span class="fw-bold">Guia rápido</span>
+                        </div>
+                        <div class="card-body text-white-50 small">
+                            - Crie a matéria no CMS e publique quando pronta.<br>
+                            - Use o slug para acessá-la via template: <code>/materia/template.html?slug=SEU-SLUG</code>.<br>
+                            - Atualize o índice em <code>data/articles.json</code> para a busca.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function(){
+        // Protege a página para admin/editor
+        if (window.UbaAuth) {
+          window.UbaAuth.requireRole(['admin','editor']);
+        }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seja nossa fonte • Ubatuba Reage</title>
+    <meta name="description" content="Denuncie irregularidades em Ubatuba de forma segura e anônima. Sua voz é importante para transformar a cidade.">
+    
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    
+    <!-- Fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:wght@400;500;600;700;800&display=swap"></noscript>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header-main header-dark">
+        <div class="container-fluid">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-auto">
+                    <div class="header-logo">
+                        <h1 class="m-0">
+                            <a href="index.html" class="custom-logo-link" rel="home">
+                                <span class="brand-logo" aria-label="Ubatuba Reage">
+                                    <span class="l1">Ubatuba</span>
+                                    <span class="l2">Reage</span>
+                                </span>
+                            </a>
+                        </h1>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <div class="header-actions d-flex align-items-center gap-3">
+                        <a href="busca.html" class="btn btn-search d-none d-lg-flex text-white-50" aria-label="Buscar">
+                            <i class="bi bi-search"></i>
+                        </a>
+                        <a href="apoie.html" class="btn btn-support btn-primary text-uppercase fw-bold px-3 py-2 d-none d-lg-inline-block">
+                            Quero Apoiar
+                        </a>
+                        <button class="btn btn-toggle-menu d-flex align-items-center gap-2 p-0 text-white" 
+                                type="button" 
+                                data-bs-toggle="offcanvas" 
+                                data-bs-target="#offcanvasMenu" 
+                                aria-controls="offcanvasMenu"
+                                aria-label="Menu">
+                            <div class="hamburger-icon">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Off-canvas Menu -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu">
+        <div class="offcanvas-header">
+            <a href="index.html" class="custom-logo-link" rel="home">
+                <span class="brand-logo" aria-label="Ubatuba Reage">
+                    <span class="l1">Ubatuba</span>
+                    <span class="l2">Reage</span>
+                </span>
+            </a>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="menu-navigation">
+                <ul class="list-unstyled">
+                    <li><a href="index.html" class="nav-link">Início</a></li>
+                    <li><a href="categoria/cidade.html" class="nav-link">Cidade</a></li>
+                    <li><a href="categoria/meio-ambiente.html" class="nav-link">Meio Ambiente</a></li>
+                    <li><a href="categoria/cultura.html" class="nav-link">Cultura</a></li>
+                    <li><a href="fontes.html" class="nav-link active">Seja nossa fonte</a></li>
+                    <li><a href="sobre.html" class="nav-link">Quem Somos</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main id="main-content" class="main-content" style="background: #0e0e0e;">
+        <!-- Breadcrumb -->
+        <section class="py-3" style="background: #111; border-bottom: 1px solid rgba(255,255,255,0.08);">
+            <div class="container">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="index.html" class="text-white-50">Início</a></li>
+                        <li class="breadcrumb-item active text-white" aria-current="page">Seja nossa fonte</li>
+                    </ol>
+                </nav>
+            </div>
+        </section>
+
+        <!-- Header -->
+        <section class="py-5" style="color: #fff;">
+            <div class="container" style="max-width: 900px;">
+                <div class="text-center mb-5">
+                    <i class="bi bi-shield-check fs-1 text-primary mb-3"></i>
+                    <h1 class="display-5 fw-bold mb-3">Seja nossa fonte</h1>
+                    <p class="lead text-white-50">
+                        Sua denúncia pode transformar Ubatuba. Envie informações sobre irregularidades, 
+                        problemas na cidade ou sugestões de pauta de forma <strong>segura e anônima</strong>.
+                    </p>
+                </div>
+
+                <!-- Security Info -->
+                <div class="row g-4 mb-5">
+                    <div class="col-md-4">
+                        <div class="text-center">
+                            <i class="bi bi-lock-fill fs-2 text-success mb-3"></i>
+                            <h3 class="h6 fw-bold text-white">Segurança garantida</h3>
+                            <p class="text-white-50 small">
+                                Suas informações são protegidas e podem ser enviadas anonimamente.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="text-center">
+                            <i class="bi bi-eye-slash-fill fs-2 text-warning mb-3"></i>
+                            <h3 class="h6 fw-bold text-white">Anonimato opcional</h3>
+                            <p class="text-white-50 small">
+                                Você decide se quer se identificar ou permanecer anônimo.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="text-center">
+                            <i class="bi bi-lightning-fill fs-2 text-info mb-3"></i>
+                            <h3 class="h6 fw-bold text-white">Resposta rápida</h3>
+                            <p class="text-white-50 small">
+                                Analisamos todas as denúncias e respondemos em até 48h.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Form Section -->
+        <section class="py-5">
+            <div class="container" style="max-width: 800px;">
+                <div class="card bg-dark border-0" style="border: 1px solid rgba(255,255,255,0.08) !important;">
+                    <div class="card-header bg-transparent border-bottom-0 pb-0">
+                        <h2 class="h5 fw-bold text-white mb-0">Formulário de denúncia</h2>
+                    </div>
+                    <div class="card-body">
+                        <form id="fontesForm" name="fontes" method="POST" data-netlify="true" data-netlify-recaptcha="true" data-recaptcha data-recaptcha-action="denuncia">
+                            <!-- Tipo de denúncia -->
+                            <div class="mb-4">
+                                <label for="tipoProblema" class="form-label text-white fw-bold">
+                                    Tipo de problema <span class="text-danger">*</span>
+                                </label>
+                                <select class="form-select form-select-lg" id="tipoProblema" name="tipo_problema" required>
+                                    <option value="">Selecione o tipo de problema</option>
+                                    <option value="infraestrutura">Infraestrutura (buracos, iluminação, sinalização)</option>
+                                    <option value="meio-ambiente">Meio Ambiente (poluição, desmatamento, lixo)</option>
+                                    <option value="saude">Saúde Pública (UBS, hospital, vigilância sanitária)</option>
+                                    <option value="educacao">Educação (escolas, transporte escolar)</option>
+                                    <option value="transporte">Transporte Público</option>
+                                    <option value="seguranca">Segurança Pública</option>
+                                    <option value="administracao">Administração Pública (irregularidades, corrupção)</option>
+                                    <option value="turismo">Turismo e Praias</option>
+                                    <option value="outros">Outros</option>
+                                </select>
+                            </div>
+
+                            <!-- Localização -->
+                            <div class="mb-4">
+                                <label for="localizacao" class="form-label text-white fw-bold">
+                                    Localização <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" 
+                                       class="form-control form-control-lg" 
+                                       id="localizacao" 
+                                       name="localizacao"
+                                       placeholder="Ex: Rua das Flores, Centro / Praia do Tenório / Próximo ao mercado..."
+                                       required>
+                                <div class="form-text text-white-50">
+                                    Seja o mais específico possível para facilitar a apuração.
+                                </div>
+                            </div>
+
+                            <!-- Título/Assunto -->
+                            <div class="mb-4">
+                                <label for="assunto" class="form-label text-white fw-bold">
+                                    Título/Assunto <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" 
+                                       class="form-control form-control-lg" 
+                                       id="assunto" 
+                                       name="assunto"
+                                       placeholder="Ex: Buraco gigante na Rua Principal há 3 meses"
+                                       required
+                                       maxlength="100">
+                                <div class="form-text text-white-50">
+                                    <span id="assuntoCount">0</span>/100 caracteres
+                                </div>
+                            </div>
+
+                            <!-- Descrição -->
+                            <div class="mb-4">
+                                <label for="descricao" class="form-label text-white fw-bold">
+                                    Descrição detalhada <span class="text-danger">*</span>
+                                </label>
+                                <textarea class="form-control" 
+                                          id="descricao" 
+                                          name="descricao"
+                                          rows="6" 
+                                          placeholder="Descreva o problema em detalhes: o que aconteceu, quando, quem está envolvido, qual o impacto na comunidade..."
+                                          required
+                                          maxlength="2000"></textarea>
+                                <div class="form-text text-white-50">
+                                    <span id="descricaoCount">0</span>/2000 caracteres. Quanto mais detalhes, melhor nossa investigação.
+                                </div>
+                            </div>
+
+                            <!-- Evidências -->
+                            <div class="mb-4">
+                                <label for="evidencias" class="form-label text-white fw-bold">
+                                    Evidências (opcional)
+                                </label>
+                                <textarea class="form-control" 
+                                          id="evidencias" 
+                                          name="evidencias"
+                                          rows="3" 
+                                          placeholder="Tem fotos, vídeos, documentos ou outras evidências? Descreva aqui como podemos acessá-las ou envie por e-mail para fontes@ubatubaReage.com.br"
+                                          maxlength="500"></textarea>
+                                <div class="form-text text-white-50">
+                                    Evidências fortalecem a denúncia, mas não são obrigatórias.
+                                </div>
+                            </div>
+
+                            <!-- Contato (opcional) -->
+                            <div class="mb-4">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <label class="form-label text-white fw-bold mb-0">
+                                        Seus dados (opcional)
+                                    </label>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="anonimo" checked>
+                                        <label class="form-check-label text-white-50" for="anonimo">
+                                            Enviar anonimamente
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div id="dadosContato" style="display: none;">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <input type="text" 
+                                                   class="form-control" 
+                                                   id="nomeContato" 
+                                                   placeholder="Seu nome (opcional)">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="email" 
+                                                   class="form-control" 
+                                                   id="emailContato" 
+                                                   placeholder="Seu e-mail (opcional)">
+                                        </div>
+                                        <div class="col-12">
+                                            <input type="tel" 
+                                                   class="form-control" 
+                                                   id="telefoneContato" 
+                                                   placeholder="Seu telefone/WhatsApp (opcional)">
+                                        </div>
+                                    </div>
+                                    <div class="form-text text-white-50 mt-2">
+                                        <i class="bi bi-info-circle me-1"></i>
+                                        Seus dados nos ajudam a entrar em contato para esclarecimentos, mas são sempre mantidos em sigilo.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Urgência -->
+                            <div class="mb-4">
+                                <label class="form-label text-white fw-bold">Nível de urgência</label>
+                                <div class="row g-2">
+                                    <div class="col-md-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="urgencia" id="urgenciaBaixa" value="baixa" checked>
+                                            <label class="form-check-label text-white-50" for="urgenciaBaixa">
+                                                <i class="bi bi-circle text-success me-1"></i> Baixa
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="urgencia" id="urgenciaMedia" value="media">
+                                            <label class="form-check-label text-white-50" for="urgenciaMedia">
+                                                <i class="bi bi-circle text-warning me-1"></i> Média
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="urgencia" id="urgenciaAlta" value="alta">
+                                            <label class="form-check-label text-white-50" for="urgenciaAlta">
+                                                <i class="bi bi-circle text-danger me-1"></i> Alta
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Terms -->
+                            <div class="mb-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="termos" required>
+                                    <label class="form-check-label text-white-50" for="termos">
+                                        Declaro que as informações fornecidas são verdadeiras e concordo com os 
+                                        <a href="termos.html" class="text-primary">termos de uso</a> e 
+                                        <a href="privacidade.html" class="text-primary">política de privacidade</a>.
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Hidden Fields -->
+                            <input type="hidden" name="form-name" value="fontes">
+                            <input type="hidden" name="timestamp" id="fontesTimestamp">
+                            
+                            <!-- reCAPTCHA -->
+                            <div class="mb-4">
+                                <div data-netlify-recaptcha="true"></div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="d-grid">
+                                <button type="submit" id="submitBtn" class="btn btn-primary btn-lg fw-bold">
+                                    <span class="btn-text">
+                                        <i class="bi bi-send me-2"></i>
+                                        Enviar Denúncia
+                                    </span>
+                                    <span class="btn-loading d-none">
+                                        <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                                        Enviando...
+                                    </span>
+                                </button>
+                            </div>
+                        </form>
+
+                        <!-- Success/Error Messages -->
+                        <div id="successMessage" class="alert alert-success mt-4" style="display: none;">
+                            <i class="bi bi-check-circle-fill me-2"></i>
+                            <strong>Denúncia enviada com sucesso!</strong>
+                            <p class="mb-0 mt-2">
+                                Recebemos sua denúncia e vamos analisá-la. Se você forneceu contato, 
+                                responderemos em até 48 horas. Obrigado por ajudar a transformar Ubatuba!
+                            </p>
+                        </div>
+
+                        <div id="errorMessage" class="alert alert-danger mt-4" style="display: none;">
+                            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                            <strong>Erro ao enviar denúncia!</strong>
+                            <p class="mb-0 mt-2 error-text">
+                                Algo deu errado. Tente novamente ou entre em contato pelo e-mail fontes@ubatubaReage.com.br
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Alternatives -->
+        <section class="py-5" style="background: #111; border-top: 1px solid rgba(255,255,255,0.08);">
+            <div class="container" style="max-width: 800px;">
+                <h3 class="h5 fw-bold mb-4 text-white text-center">Outras formas de contato</h3>
+                <div class="row g-4">
+                    <div class="col-md-4 text-center">
+                        <i class="bi bi-envelope-fill fs-3 text-primary mb-2"></i>
+                        <h4 class="h6 fw-bold text-white">E-mail</h4>
+                        <p class="text-white-50 small mb-2">Para denúncias detalhadas</p>
+                        <a href="mailto:fontes@ubatubaReage.com.br" class="text-primary">fontes@ubatubaReage.com.br</a>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <i class="bi bi-whatsapp fs-3 text-success mb-2"></i>
+                        <h4 class="h6 fw-bold text-white">WhatsApp</h4>
+                        <p class="text-white-50 small mb-2">Para contato direto</p>
+                        <a href="https://wa.me/5512999999999" class="text-success">(12) 99999-9999</a>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <i class="bi bi-telephone-fill fs-3 text-info mb-2"></i>
+                        <h4 class="h6 fw-bold text-white">Telefone</h4>
+                        <p class="text-white-50 small mb-2">Segunda a sexta, 9h às 18h</p>
+                        <a href="tel:+551233334444" class="text-info">(12) 3333-4444</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-main bg-dark text-white py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0 text-muted">© 2025 Ubatuba Reage. Todos os direitos reservados.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="d-flex gap-3 justify-content-md-end justify-content-start">
+                        <a href="sobre.html" class="text-white-50 text-decoration-none">Sobre</a>
+                        <a href="contato.html" class="text-white-50 text-decoration-none">Contato</a>
+                        <a href="privacidade.html" class="text-white-50 text-decoration-none">Privacidade</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Identity & Auth -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script src="js/auth.js"></script>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Analytics -->
+    <script src="js/analytics.js"></script>
+    <!-- reCAPTCHA -->
+    <script src="js/recaptcha.js"></script>
+    <script src="script.js"></script>
+    <script src="js/fontes.js"></script>
+</body>
+</html>

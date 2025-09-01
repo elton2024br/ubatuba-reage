@@ -1,0 +1,106 @@
+backend:
+  name: git-gateway
+  branch: main
+
+site_url: /
+logo_url: /favicon.ico
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+publish_mode: editorial_workflow
+local_backend: true
+
+collections:
+  - name: "articles"
+    label: "Matérias"
+    label_singular: "Matéria"
+    format: "json"
+    description: "Crie, edite e publique matérias."
+    create: true
+    folder: "data/posts"
+    extension: "json"
+    slug: "{{slug}}"
+    sortable_fields: ["date", "title", "category"]
+    view_groups:
+      - label: "Categoria"
+        field: "category"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string", hint: "sem espaços, use hífens" }
+      - { label: "Resumo", name: "excerpt", widget: "text" }
+      - { label: "Categoria", name: "category", widget: "select", options: ["Cidade", "Meio Ambiente", "Cultura", "Praias", "Infraestrutura", "Política", "Defesa Civil", "Orçamento"] }
+      - { label: "Slug da categoria", name: "categorySlug", widget: "select", options: ["cidade", "meio-ambiente", "cultura", "praias", "infraestrutura", "cidade", "cidade"] }
+      - { label: "Autor", name: "author", widget: "string", default: "Redação Ubatuba Reage" }
+      - { label: "E-mail do autor", name: "authorEmail", widget: "string", required: false }
+      - { label: "Data de publicação", name: "date", widget: "datetime" }
+      - { label: "Imagem destaque (1200x630)", name: "image", widget: "image" }
+      - { label: "Tags", name: "tags", widget: "list", default: [] }
+      - { label: "Conteúdo", name: "body", widget: "markdown" }
+      - { label: "URL", name: "url", widget: "string", required: false, hint: "Opcional. Se vazio, será /materia.html?slug={{slug}}" }
+
+  - name: "articles_index"
+    label: "Índice de Matérias"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - file: "data/articles.json"
+        label: "Lista de Matérias (para busca)"
+        name: "articles"
+        format: json
+        fields:
+          - label: "Matérias"
+            name: "articles"
+            widget: "list"
+            summary: "{{fields.title}} ({{fields.category}})"
+            fields:
+              - { label: "ID", name: "id", widget: "number" }
+              - { label: "Título", name: "title", widget: "string" }
+              - { label: "Slug", name: "slug", widget: "string" }
+              - { label: "Resumo", name: "excerpt", widget: "text" }
+              - { label: "Categoria", name: "category", widget: "string" }
+              - { label: "Slug da categoria", name: "categorySlug", widget: "string" }
+              - { label: "Autor", name: "author", widget: "string" }
+              - { label: "Data ISO", name: "date", widget: "datetime" }
+              - { label: "Data formatada", name: "dateFormatted", widget: "string" }
+              - { label: "Imagem", name: "image", widget: "image" }
+              - { label: "URL", name: "url", widget: "string", hint: "Ex: /materia.html?slug={{slug}}" }
+              - { label: "Tags", name: "tags", widget: "list", default: [] }
+
+  - name: "categorias_tags"
+    label: "Categorias & Tags"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - file: "data/categories.json"
+        label: "Categorias"
+        name: "categories"
+        format: json
+        fields:
+          - label: "Categorias"
+            name: "categories"
+            widget: "list"
+            fields:
+              - { label: "Nome", name: "name", widget: "string" }
+              - { label: "Slug", name: "slug", widget: "string" }
+      - file: "data/tags.json"
+        label: "Tags"
+        name: "tags"
+        format: json
+        fields:
+          - label: "Tags"
+            name: "tags"
+            widget: "list"
+            field: { label: "Tag", name: "tag", widget: "string" }
+
+publish_status:
+  roles:
+    - admin
+    - editor
+roles:
+  # Definição de papéis via Netlify Identity:
+  # - admin: acesso total
+  # - editor: publica e revisa
+  # - contributor: cria/edita próprias matérias (não publica)
+
+

@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ubatuba Reage</title>
+    <meta name="description" content="Responsabilizamos os poderosos com um jornalismo investigativo destemido e combativo. Cobrimos política, meio ambiente, segurança, tecnologia e mais.">
+    
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:wght@400;500;600;700;800&display=swap"></noscript>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='24' font-size='24'%3E📰%3C/text%3E%3C/svg%3E">
+</head>
+<body class="home">
+    <!-- Header -->
+    <header class="header-main header-dark">
+        <div class="container-fluid">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-auto">
+                    <div class="header-logo">
+                        <h1 class="m-0">
+                            <a href="#" class="custom-logo-link" rel="home" aria-current="page">
+                                <span class="brand-logo" aria-label="Ubatuba Reage">
+                                    <span class="l1">Ubatuba</span>
+                                    <span class="l2">Reage</span>
+                                </span>
+                            </a>
+                        </h1>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <div class="header-actions d-flex align-items-center gap-3">
+                        <a href="busca.html" class="btn btn-search d-none d-lg-flex text-white-50" aria-label="Buscar">
+                            <i class="bi bi-search"></i>
+                        </a>
+                        <a href="#" class="btn btn-support btn-primary text-uppercase fw-bold px-3 py-2 d-none d-lg-inline-block">
+                            Quero Apoiar
+                        </a>
+                        <button class="btn btn-toggle-menu d-flex align-items-center gap-2 p-0 text-white" 
+                                type="button" 
+                                data-bs-toggle="offcanvas" 
+                                data-bs-target="#offcanvasMenu" 
+                                aria-controls="offcanvasMenu"
+                                aria-label="Menu">
+                            <div class="hamburger-icon">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Off-canvas Menu -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
+        <div class="offcanvas-header">
+            <a href="#" class="custom-logo-link" rel="home">
+                <span class="brand-logo" aria-label="Ubatuba Reage">
+                    <span class="l1">Ubatuba</span>
+                    <span class="l2">Reage</span>
+                </span>
+            </a>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        
+        <div class="offcanvas-body">
+            <div class="support-cta mb-4">
+                <a href="#" class="btn btn-primary w-100 py-3 text-start text-uppercase fw-bold">
+                    Quero Apoiar <i class="bi bi-chevron-right float-end"></i>
+                </a>
+            </div>
+            
+            <div class="search-widget mb-4">
+                <form class="d-flex">
+                    <input type="text" class="form-control" placeholder="Buscar" aria-label="Campo de pesquisa">
+                    <button type="submit" class="btn btn-outline-secondary">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </form>
+            </div>
+            
+            <nav class="menu-navigation">
+                <ul class="list-unstyled">
+                    <li><a href="#" class="nav-link">Newsletter</a></li>
+                    <li class="has-submenu">
+                        <span class="nav-link">Categorias</span>
+                        <ul class="submenu list-unstyled">
+                            <li><a href="categoria/cidade.html" class="nav-link">Cidade</a></li>
+                            <li><a href="categoria/meio-ambiente.html" class="nav-link">Meio Ambiente</a></li>
+                            <li><a href="categoria/cultura.html" class="nav-link">Cultura</a></li>
+                            <li><a href="categoria/praias.html" class="nav-link">Praias</a></li>
+                            <li><a href="categoria/infraestrutura.html" class="nav-link">Infraestrutura</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <span class="nav-link">Especiais</span>
+                        <ul class="submenu list-unstyled">
+                            <li><a href="#" class="nav-link">Em nome dos pais</a></li>
+                            <li><a href="#" class="nav-link">O caso Marielle</a></li>
+                            <li><a href="#" class="nav-link">Alô, Milícia</a></li>
+                            <li><a href="#" class="nav-link">A crise do coronavírus</a></li>
+                            <li><a href="#" class="nav-link">As mensagens secretas da Lava Jato</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <span class="nav-link">Vozes</span>
+                        <ul class="submenu list-unstyled">
+                            <li><a href="#" class="nav-link">Todas as vozes</a></li>
+                            <li><a href="#" class="nav-link">Fabiana Moraes</a></li>
+                            <li><a href="#" class="nav-link">João Filho</a></li>
+                            <li><a href="#" class="nav-link">Orlando Calheiros</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="nav-link">Vídeos</a></li>
+                    <li><a href="fontes.html" class="nav-link">Seja nossa fonte</a></li>
+                    <li><a href="sobre.html" class="nav-link">Quem Somos</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <div class="offcanvas-footer">
+            <div class="social-media-links">
+                <ul class="d-flex justify-content-center gap-3 list-unstyled m-0">
+                    <li>
+                        <a href="https://whatsapp.com/channel/0029VaALDRl2v1J2NoFDnZ0T" 
+                           target="_blank" 
+                           rel="noreferrer" 
+                           class="social-link"
+                           title="WhatsApp">
+                            <i class="bi bi-whatsapp"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/theinterceptbrasil/" 
+                           target="_blank" 
+                           rel="noreferrer" 
+                           class="social-link"
+                           title="Instagram">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/TheInterceptBr" 
+                           target="_blank" 
+                           rel="noreferrer" 
+                           class="social-link"
+                           title="Facebook">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/company/intercept-brasil/" 
+                           target="_blank" 
+                           rel="noreferrer" 
+                           class="social-link"
+                           title="LinkedIn">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/theinterceptbrasil" 
+                           target="_blank" 
+                           rel="noreferrer" 
+                           class="social-link"
+                           title="YouTube">
+                            <i class="bi bi-youtube"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main id="main-content" class="main-content">
+        <!-- Donation/Hero Banner -->
+        <section class="donation-hero">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-10">
+                        <div class="donation-card">
+                            <div class="donation-text">
+                                <p class="kicker">QUEM BANCA O</p>
+                                <h2>JORNALISMO MAIS<br> CORAJOSO DE UBATUBA<br><span class="highlight">É VOCÊ.</span></h2>
+                                <p class="subtitle">APOIE O JORNALISMO QUE INVESTIGA<br>PARA TRANSFORMAR.</p>
+                                <a href="#" class="btn btn-lg btn-primary btn-donate">DOAR PARA UBATUBA REAGE</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feed list style (dark) -->
+        <section class="feed-dark">
+            <div class="container">
+                <article class="feed-item">
+                    <a href="https://www.ubatuba.sp.gov.br/noticias/prefeituradeubatubanotifica/" target="_blank" rel="noopener noreferrer" class="feed-thumb">
+                        <img src="https://picsum.photos/900/500?random=201" alt="Prefeitura notifica plataformas por fake news sobre 'bactéria' nas praias">
+                    </a>
+                    <h3 class="feed-title"><a href="materia/prefeitura-notifica-fake-news.html">Prefeitura de Ubatuba notifica Google e Meta por fake news sobre suposta bactéria nas praias</a></h3>
+                </article>
+                <article class="feed-item">
+                    <a href="https://ln21.com.br/categoria/23/ubatuba/" target="_blank" rel="noopener noreferrer" class="feed-thumb">
+                        <img src="https://picsum.photos/900/500?random=202" alt="Edital de pavimentação em seis bairros de Ubatuba">
+                    </a>
+                    <h3 class="feed-title"><a href="https://ln21.com.br/categoria/23/ubatuba/" target="_blank" rel="noopener noreferrer">Ubatuba lança licitação de quase R$ 2 milhões para pavimentação em seis bairros</a></h3>
+                </article>
+            </div>
+        </section>
+        <!-- Hero Section -->
+        <section class="hero-section py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <article class="featured-article">
+                            <div class="article-image mb-3">
+                                <img src="https://picsum.photos/800/450?random=301" 
+                                     alt="Prefeitura de Ubatuba notifica plataformas por fake news" 
+                                     class="img-fluid rounded">
+                            </div>
+                            <div class="article-content">
+                                <span class="article-category text-primary fw-bold small text-uppercase">Cidade</span>
+                                <h2 class="article-title display-5 fw-bold my-3">
+                                    <a href="materia/prefeitura-notifica-fake-news.html" class="text-decoration-none text-dark">Prefeitura de Ubatuba notifica Google e Meta por conteúdos falsos sobre praias</a>
+                                </h2>
+                                <p class="article-excerpt lead text-muted">
+                                    Administração municipal pediu a remoção de publicações com informações não comprovadas sobre uma suposta “bactéria necrosante”, que causaram prejuízos ao turismo local.
+                                </p>
+                                <div class="article-meta d-flex align-items-center gap-3 text-muted small">
+                                    <span>Por <strong>Redação Ubatuba Reage</strong></span>
+                                    <span>•</span>
+                                    <time datetime="2025-07-10">10 de julho, 2025</time>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    
+                    <div class="col-lg-4">
+                        <div class="sidebar-articles">
+                            <h3 class="sidebar-title h5 fw-bold mb-3">Mais lidas</h3>
+                            
+                            <article class="sidebar-article mb-4">
+                                <div class="row g-2">
+                                    <div class="col-4">
+                                        <img src="https://picsum.photos/150/100?random=311" 
+                                             alt="Chuvas no litoral norte e retorno de moradores" 
+                                             class="img-fluid rounded">
+                                    </div>
+                                    <div class="col-8">
+                                        <span class="article-category text-success fw-bold small text-uppercase">Defesa Civil</span>
+                                        <h4 class="article-title h6 fw-bold my-2">
+                                            <a href="https://noticias.uol.com.br/ultimas-noticias/agencia-brasil/2025/04/06/aguas-baixam-em-ubatuba-e-moradores-ja-comecam-a-voltar-para-casa.htm" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-dark">Águas baixam em Ubatuba e moradores começam a retornar para casa após chuvas</a>
+                                        </h4>
+                                        <div class="article-meta text-muted small">
+                                            <time datetime="2025-04-06">6 de abril</time>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            
+                            <article class="sidebar-article mb-4">
+                                <div class="row g-2">
+                                    <div class="col-4">
+                                        <img src="https://picsum.photos/150/100?random=312" 
+                                             alt="Festival do Camarão da Almada" 
+                                             class="img-fluid rounded">
+                                    </div>
+                                    <div class="col-8">
+                                        <span class="article-category text-danger fw-bold small text-uppercase">Cultura</span>
+                                        <h4 class="article-title h6 fw-bold my-2">
+                                            <a href="https://ln21.com.br/categoria/23/ubatuba/" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-dark">Festival do Camarão da Almada celebra 30 anos com shows e gastronomia caiçara</a>
+                                        </h4>
+                                        <div class="article-meta text-muted small">
+                                            <time datetime="2025-07-20">julho de 2025</time>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            
+                            <article class="sidebar-article mb-4">
+                                <div class="row g-2">
+                                    <div class="col-4">
+                                        <img src="https://picsum.photos/150/100?random=313" 
+                                             alt="Regras nas praias de Ubatuba" 
+                                             class="img-fluid rounded">
+                                    </div>
+                                    <div class="col-8">
+                                        <span class="article-category text-warning fw-bold small text-uppercase">Praias</span>
+                                        <h4 class="article-title h6 fw-bold my-2">
+                                            <a href="https://revistaoeste.com/tag/ubatuba/" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-dark">Ubatuba proíbe uso de tendas e barracas nas praias para preservar o ambiente</a>
+                                        </h4>
+                                        <div class="article-meta text-muted small">
+                                            <time datetime="2025-06-15">junho de 2025</time>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Articles Grid -->
+        <section class="articles-grid py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="section-title h3 fw-bold mb-4">Últimas matérias</h2>
+                    </div>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4">
+                        <article class="card h-100 border-0 shadow-sm">
+                            <img src="https://picsum.photos/400/250?random=401" 
+                                 alt="Pavimentação em bairros de Ubatuba" 
+                                 class="card-img-top">
+                            <div class="card-body">
+                                <span class="article-category text-primary fw-bold small text-uppercase">Infraestrutura</span>
+                                <h3 class="card-title h5 fw-bold my-2">
+                                    <a href="https://ln21.com.br/categoria/23/ubatuba/" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-dark">Prefeitura abre licitação para pavimentação em seis bairros; investimento chega a R$ 2 milhões</a>
+                                </h3>
+                                <p class="card-text text-muted">
+                                    Edital de concorrência eletrônica busca contratar empresa de engenharia para executar as obras.
+                                </p>
+                            </div>
+                            <div class="card-footer bg-transparent border-0">
+                                <div class="article-meta text-muted small">
+                                    <span>Por <strong>Ana Silva</strong></span>
+                                    <span class="float-end">julho de 2025</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-4">
+                        <article class="card h-100 border-0 shadow-sm">
+                            <img src="https://picsum.photos/400/250?random=402" 
+                                 alt="Bioluminescência em Ubatuba" 
+                                 class="card-img-top">
+                            <div class="card-body">
+                                <span class="article-category text-success fw-bold small text-uppercase">Meio Ambiente</span>
+                                <h3 class="card-title h5 fw-bold my-2">
+                                    <a href="https://revistaoeste.com/tag/ubatuba/" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-dark">Ondas azuis: moradores registram fenômeno de bioluminescência nas praias</a>
+                                </h3>
+                                <p class="card-text text-muted">
+                                    Fenômeno natural raro iluminou a arrebentação em março e voltou a ser observado por moradores e turistas.
+                                </p>
+                            </div>
+                            <div class="card-footer bg-transparent border-0">
+                                <div class="article-meta text-muted small">
+                                    <span>Por <strong>Carlos Santos</strong></span>
+                                    <span class="float-end">março de 2025</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-4">
+                        <article class="card h-100 border-0 shadow-sm">
+                            <img src="https://picsum.photos/400/250?random=403" 
+                                 alt="Regras nas praias de Ubatuba" 
+                                 class="card-img-top">
+                            <div class="card-body">
+                                <span class="article-category text-danger fw-bold small text-uppercase">Praias</span>
+                                <h3 class="card-title h5 fw-bold my-2">
+                                    <a href="https://revistaoeste.com/tag/ubatuba/" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-dark">Nova regra: cidade proíbe barracas e tendas nas praias para garantir livre acesso</a>
+                                </h3>
+                                <p class="card-text text-muted">
+                                    Medida municipal busca preservar o ambiente e melhorar a segurança dos banhistas.
+                                </p>
+                            </div>
+                            <div class="card-footer bg-transparent border-0">
+                                <div class="article-meta text-muted small">
+                                    <span>Por <strong>Maria Oliveira</strong></span>
+                                    <span class="float-end">junho de 2025</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                
+                <div class="row mt-4">
+                    <div class="col-12 text-center">
+                        <a href="#" class="btn btn-outline-primary btn-lg">Ver mais matérias</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section id="newsletter" class="newsletter-section py-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <h2 class="section-title h3 fw-bold mb-3">Receba nossa newsletter</h2>
+                        <p class="lead text-white mb-4">
+                            Fique por dentro das principais notícias e investigações sobre Ubatuba.
+                        </p>
+                        
+                        <form id="newsletterForm" class="newsletter-form" name="newsletter" method="POST" data-netlify="true" data-netlify-recaptcha="true" data-recaptcha data-recaptcha-action="newsletter">
+                            <div class="row g-2 justify-content-center">
+                                <div class="col-md-6">
+                                    <input type="email" 
+                                           id="newsletterEmail"
+                                           name="email"
+                                           class="form-control form-control-lg" 
+                                           placeholder="Seu melhor e-mail"
+                                           required>
+                                    <input type="hidden" name="form-name" value="newsletter">
+                                    <input type="hidden" name="source" value="homepage">
+                                    <input type="hidden" name="timestamp" id="newsletterTimestamp">
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                                <div class="col-md-auto">
+                                    <button type="submit" id="newsletterBtn" class="btn btn-light btn-lg px-4 fw-bold">
+                                        <span class="btn-text">Inscrever-se</span>
+                                        <span class="btn-loading d-none">
+                                            <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                                            Enviando...
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- reCAPTCHA -->
+                            <div class="row justify-content-center mt-3">
+                                <div class="col-md-8">
+                                    <div data-netlify-recaptcha="true"></div>
+                                </div>
+                            </div>
+                        </form>
+                        
+                        <!-- Success/Error Messages -->
+                        <div id="newsletterSuccess" class="alert alert-success mt-3" style="display: none;">
+                            <i class="bi bi-check-circle-fill me-2"></i>
+                            <strong>Sucesso!</strong> Você foi inscrito na nossa newsletter. Verifique seu e-mail para confirmar.
+                        </div>
+                        
+                        <div id="newsletterError" class="alert alert-danger mt-3" style="display: none;">
+                            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                            <strong>Erro!</strong> <span class="error-message">Algo deu errado. Tente novamente.</span>
+                        </div>
+                        
+                        <p class="small text-white mt-3">
+                            Ao se inscrever, você concorda com nossa <a href="privacidade.html" class="text-white">política de privacidade</a>. 
+                            Enviamos no máximo 2 e-mails por semana.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-main bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <img src="https://uploads.intercept.com.br/2023/07/SvRNnl9L-header.svg" 
+                         alt="Intercept Brasil" 
+                         class="footer-logo mb-3"
+                         width="140" 
+                         height="44"
+                         style="filter: brightness(0) invert(1);">
+                    <p class="text-light">
+                        Responsabilizamos os poderosos com um jornalismo investigativo destemido e combativo.
+                    </p>
+                </div>
+                
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5 class="fw-bold mb-3">Conteúdo</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-light text-decoration-none">Matérias</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">Especiais</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">Vozes</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">Vídeos</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5 class="fw-bold mb-3">Sobre</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="sobre.html" class="text-light text-decoration-none">Quem Somos</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">Equipe</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">Seja nossa fonte</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5 class="fw-bold mb-3">Legal</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-light text-decoration-none">Política de Privacidade</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">Termos de Uso</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 col-md-12 mb-4">
+                    <h5 class="fw-bold mb-3">Redes Sociais</h5>
+                    <div class="social-links d-flex gap-2">
+                        <a href="#" class="text-light" title="WhatsApp">
+                            <i class="bi bi-whatsapp fs-5"></i>
+                        </a>
+                        <a href="#" class="text-light" title="Instagram">
+                            <i class="bi bi-instagram fs-5"></i>
+                        </a>
+                        <a href="#" class="text-light" title="Facebook">
+                            <i class="bi bi-facebook fs-5"></i>
+                        </a>
+                        <a href="#" class="text-light" title="LinkedIn">
+                            <i class="bi bi-linkedin fs-5"></i>
+                        </a>
+                        <a href="#" class="text-light" title="YouTube">
+                            <i class="bi bi-youtube fs-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-4">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0 text-muted">
+                        © 2024 Intercept Brasil. Todos os direitos reservados.
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="btn btn-primary">Apoie nosso jornalismo</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Identity & Auth -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script src="js/auth.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Analytics -->
+    <script src="js/analytics.js"></script>
+    <!-- reCAPTCHA -->
+    <script src="js/recaptcha.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+    <script src="js/newsletter.js"></script>
+</body>
+</html>
