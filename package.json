@@ -7,9 +7,7 @@
     "build": "echo 'Build completed'",
     "dev": "echo 'Development server'"
   },
-  "dependencies": {
-    "@netlify/identity-widget": "^1.9.2"
-  },
+  "dependencies": {},
   "devDependencies": {},
   "keywords": ["jornalismo", "ubatuba", "investigativo"],
   "author": "Ubatuba Reage",
