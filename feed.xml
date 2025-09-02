@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" 
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:sy="http://purl.org/rss/1.0/modules/syndication/">
+
+    <channel>
+        <title>Ubatuba Reage - Portal de Notícias Independente</title>
+        <link>https://ubatubareage.com.br</link>
+        <description>O movimento cidadão independente que dá voz à comunidade de Ubatuba. Notícias, denúncias e mobilização pela transparência.</description>
+        <language>pt-BR</language>
+        <copyright>© 2024 Ubatuba Reage. Todos os direitos reservados.</copyright>
+        <managingEditor>redacao@ubatubareage.com.br (Redação Ubatuba Reage)</managingEditor>
+        <webMaster>contato@ubatubareage.com.br (Ubatuba Reage)</webMaster>
+        <lastBuildDate>Sun, 15 Dec 2024 13:00:00 -0300</lastBuildDate>
+        <pubDate>Sun, 15 Dec 2024 13:00:00 -0300</pubDate>
+        <generator>Ubatuba Reage RSS Generator</generator>
+        <docs>https://www.rssboard.org/rss-specification</docs>
+        <ttl>60</ttl>
+        <sy:updatePeriod>hourly</sy:updatePeriod>
+        <sy:updateFrequency>1</sy:updateFrequency>
+        
+        <!-- Atom Self-Reference -->
+        <atom:link href="https://ubatubareage.com.br/feed.xml" rel="self" type="application/rss+xml"/>
+        
+        <!-- Channel Image -->
+        <image>
+            <url>https://ubatubareage.com.br/assets/logo-rss.png</url>
+            <title>Ubatuba Reage</title>
+            <link>https://ubatubareage.com.br</link>
+            <width>144</width>
+            <height>144</height>
+            <description>Logo do Ubatuba Reage</description>
+        </image>
+
+        <!-- Items/Articles -->
+        <item>
+            <title>Prefeitura de Ubatuba notifica sites que espalharam fake news sobre obras</title>
+            <link>https://ubatubareage.com.br/materia/prefeitura-notifica-fake-news.html</link>
+            <description>Administração municipal toma medidas legais contra desinformação sobre projetos de infraestrutura na cidade. Ação visa combater notícias falsas que prejudicam a transparência pública.</description>
+            <content:encoded><![CDATA[
+                <p>A Prefeitura de Ubatuba notificou oficialmente diversos sites e perfis em redes sociais que divulgaram informações falsas sobre as obras de infraestrutura em andamento na cidade.</p>
+                
+                <p>Segundo o comunicado oficial, as notícias falsas causaram confusão na população e prejudicaram a transparência dos projetos municipais.</p>
+                
+                <h3>Principais fake news identificadas</h3>
+                <ul>
+                    <li>Superfaturamento inexistente em obras de saneamento</li>
+                    <li>Cancelamento fictício de projetos aprovados</li>
+                    <li>Desvio de verbas sem comprovação</li>
+                </ul>
+                
+                <p>A administração reforça que todos os dados sobre obras públicas estão disponíveis no Portal da Transparência.</p>
+                
+                <p><strong>Fonte:</strong> Assessoria de Comunicação - Prefeitura de Ubatuba</p>
+            ]]></content:encoded>
+            <author>redacao@ubatubareage.com.br (João Silva)</author>
+            <category domain="https://ubatubareage.com.br/categoria/cidade.html">Cidade</category>
+            <category>transparência</category>
+            <category>fake news</category>
+            <category>prefeitura</category>
+            <guid isPermaLink="true">https://ubatubareage.com.br/materia/prefeitura-notifica-fake-news.html</guid>
+            <pubDate>Tue, 10 Dec 2024 17:30:00 -0300</pubDate>
+            <dc:creator>João Silva</dc:creator>
+        </item>
+
+        <item>
+            <title>Projeto de reflorestamento recupera 50 hectares da Mata Atlântica</title>
+            <link>https://ubatubareage.com.br/materia/mata-atlantica-preservacao.html</link>
+            <description>Iniciativa conjunta entre prefeitura e ONGs ambientais já plantou mais de 10 mil mudas nativas na região do Sertão da Quina, contribuindo para a preservação do bioma local.</description>
+            <content:encoded><![CDATA[
+                <p>Um projeto de reflorestamento desenvolvido em parceria entre a Prefeitura de Ubatuba e organizações ambientais conseguiu recuperar 50 hectares de Mata Atlântica degradada na região do Sertão da Quina.</p>
+                
+                <p>A iniciativa, que teve início em 2023, já plantou mais de 10 mil mudas de espécies nativas como pau-brasil, jequitibá e palmito juçara.</p>
+                
+                <h3>Resultados alcançados</h3>
+                <ul>
+                    <li>50 hectares de área reflorestada</li>
+                    <li>10.247 mudas plantadas</li>
+                    <li>85% de taxa de sobrevivência das plantas</li>
+                    <li>15 espécies nativas diferentes</li>
+                </ul>
+                
+                <p>O projeto conta com o apoio de voluntários da comunidade e estudantes de escolas locais, promovendo educação ambiental.</p>
+                
+                <p><strong>Fonte:</strong> Instituto Verde Ubatuba</p>
+            ]]></content:encoded>
+            <author>redacao@ubatubareage.com.br (Ana Santos)</author>
+            <category domain="https://ubatubareage.com.br/categoria/meio-ambiente.html">Meio Ambiente</category>
+            <category>reflorestamento</category>
+            <category>mata atlântica</category>
+            <category>preservação</category>
+            <guid isPermaLink="true">https://ubatubareage.com.br/materia/mata-atlantica-preservacao.html</guid>
+            <pubDate>Fri, 13 Dec 2024 12:15:00 -0300</pubDate>
+            <dc:creator>Ana Santos</dc:creator>
+        </item>
+
+        <item>
+            <title>Mutirão de limpeza remove 2 toneladas de lixo das praias</title>
+            <link>https://ubatubareage.com.br/materia/mutirao-limpeza-praias.html</link>
+            <description>Ação voluntária mobilizou mais de 200 pessoas em 15 praias da cidade durante o final de semana, recolhendo principalmente plásticos e materiais recicláveis.</description>
+            <content:encoded><![CDATA[
+                <p>O mutirão de limpeza das praias realizado no último final de semana superou todas as expectativas, removendo 2 toneladas de resíduos de 15 praias de Ubatuba.</p>
+                
+                <p>A ação, organizada pelo coletivo "Praias Limpas", contou com a participação de mais de 200 voluntários, incluindo famílias, surfistas e ambientalistas.</p>
+                
+                <h3>Praias contempladas</h3>
+                <ul>
+                    <li>Praia Grande</li>
+                    <li>Praia do Tenório</li>
+                    <li>Praia da Enseada</li>
+                    <li>Praia Vermelha do Norte</li>
+                    <li>Praia do Lázaro</li>
+                    <li>E outras 10 praias</li>
+                </ul>
+                
+                <p>Os materiais coletados foram separados para reciclagem, com destaque para garrafas PET, embalagens plásticas e bitucas de cigarro.</p>
+                
+                <p><strong>Próximo mutirão:</strong> 28 de dezembro, às 8h, concentração na Praia Grande.</p>
+            ]]></content:encoded>
+            <author>redacao@ubatubareage.com.br (Carlos Mendes)</author>
+            <category domain="https://ubatubareage.com.br/categoria/meio-ambiente.html">Meio Ambiente</category>
+            <category>limpeza</category>
+            <category>praias</category>
+            <category>voluntários</category>
+            <guid isPermaLink="true">https://ubatubareage.com.br/materia/mutirao-limpeza-praias.html</guid>
+            <pubDate>Wed, 11 Dec 2024 19:20:00 -0300</pubDate>
+            <dc:creator>Carlos Mendes</dc:creator>
+        </item>
+
+        <item>
+            <title>Festival de Inverno de Ubatuba bate recorde de público</title>
+            <link>https://ubatubareage.com.br/materia/festival-inverno-ubatuba.html</link>
+            <description>Evento cultural atraiu mais de 15 mil pessoas ao longo de três dias, movimentando a economia local e promovendo artistas regionais.</description>
+            <content:encoded><![CDATA[
+                <p>O Festival de Inverno de Ubatuba 2024 encerrou sua 8ª edição com recorde histórico de público: mais de 15 mil pessoas passaram pelo evento ao longo dos três dias de programação.</p>
+                
+                <p>O festival, realizado no Centro Histórico, apresentou 45 atrações musicais, oficinas culturais, feira gastronômica e exposições de arte local.</p>
+                
+                <h3>Destaques da programação</h3>
+                <ul>
+                    <li>Show principal: Banda local "Maré Alta"</li>
+                    <li>20 oficinas culturais gratuitas</li>
+                    <li>Feira com 30 produtores locais</li>
+                    <li>Exposição "Ubatuba em Cores"</li>
+                </ul>
+                
+                <p>Segundo a organização, o evento gerou impacto econômico estimado em R$ 500 mil para a cidade, beneficiando hotéis, restaurantes e comércio local.</p>
+                
+                <p><strong>Próxima edição:</strong> Junho de 2025</p>
+            ]]></content:encoded>
+            <author>redacao@ubatubareage.com.br (Maria Oliveira)</author>
+            <category domain="https://ubatubareage.com.br/categoria/cultura.html">Cultura</category>
+            <category>festival</category>
+            <category>música</category>
+            <category>turismo</category>
+            <guid isPermaLink="true">https://ubatubareage.com.br/materia/festival-inverno-ubatuba.html</guid>
+            <pubDate>Thu, 12 Dec 2024 14:45:00 -0300</pubDate>
+            <dc:creator>Maria Oliveira</dc:creator>
+        </item>
+
+        <item>
+            <title>Nova ciclovia conecta centro ao Perequê-Açu</title>
+            <link>https://ubatubareage.com.br/materia/ciclovia-perequê-acu.html</link>
+            <description>Obra de 3,2 km foi inaugurada pela prefeitura, oferecendo alternativa sustentável de transporte e promovendo mobilidade urbana na cidade.</description>
+            <content:encoded><![CDATA[
+                <p>Foi inaugurada na última segunda-feira a nova ciclovia que conecta o centro de Ubatuba ao bairro Perequê-Açu, totalizando 3,2 km de extensão.</p>
+                
+                <p>A obra, que custou R$ 850 mil aos cofres municipais, faz parte do projeto "Ubatuba Bike" de incentivo ao transporte sustentável.</p>
+                
+                <h3>Características da ciclovia</h3>
+                <ul>
+                    <li>3,2 km de extensão total</li>
+                    <li>2 metros de largura</li>
+                    <li>Iluminação LED em toda extensão</li>
+                    <li>5 pontos de parada com bicicletários</li>
+                    <li>Sinalização horizontal e vertical</li>
+                </ul>
+                
+                <p>A prefeitura estima que a ciclovia será utilizada por cerca de 300 pessoas diariamente, reduzindo o trânsito de veículos na região central.</p>
+                
+                <p><strong>Próxima etapa:</strong> Extensão até a Praia Grande, prevista para março de 2025.</p>
+            ]]></content:encoded>
+            <author>redacao@ubatubareage.com.br (Pedro Costa)</author>
+            <category domain="https://ubatubareage.com.br/categoria/cidade.html">Cidade</category>
+            <category>ciclovia</category>
+            <category>mobilidade</category>
+            <category>sustentabilidade</category>
+            <guid isPermaLink="true">https://ubatubareage.com.br/materia/ciclovia-perequê-acu.html</guid>
+            <pubDate>Mon, 09 Dec 2024 10:30:00 -0300</pubDate>
+            <dc:creator>Pedro Costa</dc:creator>
+        </item>
+
+    </channel>
+</rss>

@@ -1,0 +1,57 @@
+# Robots.txt para Ubatuba Reage
+# https://ubatubareage.com.br/robots.txt
+
+User-agent: *
+Allow: /
+
+# Permitir acesso a recursos importantes
+Allow: /styles.css
+Allow: /script.js
+Allow: /js/
+Allow: /categoria/
+Allow: /materia/
+
+# Bloquear áreas administrativas e privadas
+Disallow: /admin/
+Disallow: /dashboard.html
+Disallow: /.netlify/
+Disallow: /config/
+
+# Bloquear arquivos de template e desenvolvimento
+Disallow: /materia/template.html
+Disallow: /*.json$
+
+# Permitir bots de notícias
+User-agent: Googlebot-News
+Allow: /
+Allow: /materia/
+Allow: /categoria/
+
+# Permitir bots de imagem
+User-agent: Googlebot-Image
+Allow: /
+
+# Bloquear bots de spam conhecidos
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Sitemap
+Sitemap: https://ubatubareage.com.br/sitemap.xml
+
+# Crawl-delay para bots agressivos
+User-agent: *
+Crawl-delay: 1
+
+# Informações adicionais
+# Site: Ubatuba Reage - Portal de notícias independente
+# Contato: contato@ubatubareage.com.br
+# Última atualização: 15/12/2024
