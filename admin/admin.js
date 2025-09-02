@@ -598,8 +598,52 @@ class AdminPanel {
     }
     
     showNewArticleModal() {
-        const modal = new bootstrap.Modal(document.getElementById('newArticleModal'));
-        modal.show();
+        console.log('🔍 Tentando abrir modal de novo artigo...');
+        
+        const modalElement = document.getElementById('newArticleModal');
+        if (!modalElement) {
+            console.error('❌ Elemento do modal não encontrado!');
+            this.showNotification('Erro: Modal não encontrado!', 'danger');
+            return;
+        }
+        
+        console.log('✅ Elemento do modal encontrado');
+        
+        try {
+            // Tentar usar Bootstrap Modal
+            if (typeof bootstrap !== 'undefined' && bootstrap.Modal) {
+                console.log('🚀 Usando Bootstrap Modal...');
+                const modal = new bootstrap.Modal(modalElement);
+                modal.show();
+                console.log('✅ Modal aberto com Bootstrap');
+            } else {
+                console.warn('⚠️ Bootstrap não disponível, abrindo modal manualmente...');
+                // Fallback manual
+                modalElement.style.display = 'block';
+                modalElement.classList.add('show');
+                document.body.classList.add('modal-open');
+                
+                // Adicionar backdrop
+                const backdrop = document.createElement('div');
+                backdrop.className = 'modal-backdrop fade show';
+                document.body.appendChild(backdrop);
+                
+                console.log('✅ Modal aberto manualmente');
+            }
+            
+            // Focar no primeiro campo
+            setTimeout(() => {
+                const firstInput = modalElement.querySelector('input[name="title"]');
+                if (firstInput) {
+                    firstInput.focus();
+                    console.log('✅ Foco definido no campo título');
+                }
+            }, 300);
+            
+        } catch (error) {
+            console.error('❌ Erro ao abrir modal:', error);
+            this.showNotification('Erro ao abrir modal: ' + error.message, 'danger');
+        }
     }
     
     showInviteUserModal() {
@@ -756,33 +800,92 @@ class AdminPanel {
     }
     
     createArticle() {
-        // Simulate article creation
-        const form = document.getElementById('newArticleForm');
-        const formData = new FormData(form);
+        console.log('🚀 Iniciando criação de artigo...');
         
-        // Add to articles array
+        // Verificar se o formulário existe
+        const form = document.getElementById('newArticleForm');
+        if (!form) {
+            console.error('❌ Formulário newArticleForm não encontrado!');
+            this.showNotification('Erro: Formulário não encontrado!', 'danger');
+            return;
+        }
+        
+        console.log('✅ Formulário encontrado, coletando dados...');
+        
+        // Coletar dados do formulário
+        const formData = new FormData(form);
+        const title = formData.get('title');
+        const category = formData.get('category');
+        const status = formData.get('status');
+        const excerpt = formData.get('excerpt');
+        const content = formData.get('content');
+        
+        console.log('📝 Dados coletados:', { title, category, status, excerpt, content });
+        
+        // Validar dados obrigatórios
+        if (!title || !category || !status) {
+            console.error('❌ Dados obrigatórios não preenchidos!');
+            this.showNotification('Por favor, preencha todos os campos obrigatórios!', 'warning');
+            return;
+        }
+        
+        // Criar novo artigo
         const newArticle = {
             id: Date.now().toString(),
-            title: formData.get('title') || 'Novo Artigo',
-            excerpt: formData.get('excerpt') || 'Resumo do artigo...',
-            category: formData.get('category') || 'cidade',
-            author: 'Admin',
-            status: formData.get('status') || 'draft',
+            title: title,
+            excerpt: excerpt || 'Resumo do artigo...',
+            category: category,
+            author: this.getCurrentUser()?.email || 'Admin',
+            status: status,
             date: new Date().toISOString().split('T')[0],
             views: 0,
             image: 'https://picsum.photos/50/50?random=' + Math.floor(Math.random() * 1000)
         };
         
-        this.data.articles.unshift(newArticle);
+        console.log('📰 Novo artigo criado:', newArticle);
         
-        // Close modal and refresh
-        bootstrap.Modal.getInstance(document.getElementById('newArticleModal')).hide();
+        // Adicionar ao array de artigos
+        this.data.articles.unshift(newArticle);
+        console.log('✅ Artigo adicionado ao array. Total de artigos:', this.data.articles.length);
+        
+        // Fechar modal
+        try {
+            const modal = bootstrap.Modal.getInstance(document.getElementById('newArticleModal'));
+            if (modal) {
+                modal.hide();
+                console.log('✅ Modal fechado com sucesso');
+            } else {
+                console.warn('⚠️ Modal não encontrado, tentando fechar manualmente...');
+                const modalElement = document.getElementById('newArticleModal');
+                if (modalElement) {
+                    modalElement.classList.remove('show');
+                    modalElement.style.display = 'none';
+                    document.body.classList.remove('modal-open');
+                    const backdrop = document.querySelector('.modal-backdrop');
+                    if (backdrop) backdrop.remove();
+                }
+            }
+        } catch (error) {
+            console.error('❌ Erro ao fechar modal:', error);
+        }
+        
+        // Limpar formulário
         form.reset();
+        console.log('✅ Formulário limpo');
+        
+        // Atualizar interface
         this.loadArticles();
         this.updateStats();
         
-        // Show success message
+        // Mostrar mensagem de sucesso
         this.showNotification('Artigo criado com sucesso!', 'success');
+        console.log('🎉 Artigo criado com sucesso!');
+        
+        // Atualizar contador de artigos na interface
+        const totalArticlesElement = document.getElementById('totalArticles');
+        if (totalArticlesElement) {
+            totalArticlesElement.textContent = this.data.articles.length;
+        }
     }
     
     inviteUser() {
@@ -910,12 +1013,27 @@ class AdminPanel {
 
 // Initialize admin panel when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('🚀 DOM carregado, verificando dependências...');
+    
+    // Verificar se Bootstrap está disponível
+    if (typeof bootstrap === 'undefined') {
+        console.error('❌ Bootstrap não está disponível!');
+        alert('Erro: Bootstrap não foi carregado. Recarregue a página.');
+        return;
+    }
+    
+    console.log('✅ Bootstrap disponível:', bootstrap.version || 'versão desconhecida');
+    
     // Check if user is authenticated
     if (window.netlifyIdentity) {
+        console.log('🔐 Netlify Identity disponível');
+        
         netlifyIdentity.on('init', user => {
+            console.log('🔄 Netlify Identity inicializado:', user);
             if (user) {
                 // Verifica se o usuário é autorizado
                 if (isAdminEmail(user.email)) {
+                    console.log('✅ Usuário autorizado, criando painel admin...');
                     window.adminPanel = new AdminPanel();
                     window.adminPanel.updateUserInfo(user);
                 } else {
@@ -924,21 +1042,25 @@ document.addEventListener('DOMContentLoaded', function() {
                     window.location.href = '/';
                 }
             } else {
+                console.log('🔒 Nenhum usuário logado, abrindo login...');
                 // Redirect to login if not authenticated
                 netlifyIdentity.open('login');
             }
         });
         
         netlifyIdentity.on('login', user => {
+            console.log('✅ Usuário logado:', user);
             if (user) {
                 // Verifica se o usuário é autorizado
                 if (isAdminEmail(user.email)) {
+                    console.log('✅ Usuário autorizado após login');
                     if (!window.adminPanel) {
+                        console.log('🚀 Criando novo painel admin...');
                         window.adminPanel = new AdminPanel();
                     }
                     window.adminPanel.updateUserInfo(user);
                 } else {
-                    console.log('❌ Usuário não autorizado:', user.email);
+                    console.log('❌ Usuário não autorizado após login:', user.email);
                     alert('Você não tem permissão para acessar o painel administrativo. Emails autorizados: ' + (window.ADMIN_EMAILS ? window.ADMIN_EMAILS.join(', ') : 'Nenhum'));
                     netlifyIdentity.logout();
                 }
@@ -946,9 +1068,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         netlifyIdentity.on('logout', () => {
+            console.log('🚪 Usuário fez logout, redirecionando...');
             window.location.href = '/';
         });
     } else {
+        console.warn('⚠️ Netlify Identity não disponível, criando painel sem autenticação...');
         // Fallback if Netlify Identity is not available
         window.adminPanel = new AdminPanel();
     }
