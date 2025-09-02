@@ -54,15 +54,26 @@ class AdminPanel {
             this.showInviteUserModal();
         });
         
-        // Logout
-        document.getElementById('logoutBtn')?.addEventListener('click', (e) => {
-            e.preventDefault();
-            this.logout();
+        // Logout buttons - CORRIGIDO
+        const logoutButtons = document.querySelectorAll('#logoutBtn, #headerLogoutBtn');
+        logoutButtons.forEach(btn => {
+            if (btn) {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.logout();
+                });
+            }
         });
         
-        document.getElementById('headerLogoutBtn')?.addEventListener('click', (e) => {
-            e.preventDefault();
-            this.logout();
+        // Profile and settings dropdown - CORRIGIDO
+        document.addEventListener('click', (e) => {
+            if (e.target.matches('[data-action="profile"]')) {
+                e.preventDefault();
+                this.showProfileModal();
+            } else if (e.target.matches('[data-action="settings"]')) {
+                e.preventDefault();
+                this.navigateToSection('settings');
+            }
         });
         
         // Form submissions
@@ -99,6 +110,11 @@ class AdminPanel {
                 e.target.classList.add('active');
                 this.updateViewsChart(e.target.getAttribute('data-period'));
             });
+        });
+        
+        // Notifications button
+        document.getElementById('notificationsBtn')?.addEventListener('click', () => {
+            this.showNotifications();
         });
     }
     
@@ -295,7 +311,7 @@ class AdminPanel {
                 <td>${user.lastLogin ? new Date(user.lastLogin).toLocaleDateString('pt-BR') : 'Nunca'}</td>
                 <td>
                     <div class="table-actions">
-                        <button class="btn btn-sm btn-outline-primary" onclick="adminPanel.editArticle('${user.id}')">
+                        <button class="btn btn-sm btn-outline-primary" onclick="adminPanel.editUser('${user.id}')">
                             <i class="bi bi-pencil"></i>
                         </button>
                         <button class="btn btn-sm btn-outline-warning" onclick="adminPanel.changeUserRole('${user.id}')">
@@ -591,6 +607,154 @@ class AdminPanel {
         modal.show();
     }
     
+    showProfileModal() {
+        // Criar modal de perfil dinamicamente
+        const profileModal = `
+            <div class="modal fade" id="profileModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Meu Perfil</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="text-center mb-4">
+                                <div class="profile-avatar mb-3">
+                                    <i class="bi bi-person-circle" style="font-size: 4rem; color: #0d6efd;"></i>
+                                </div>
+                                <h5 id="profileUserName">${this.getCurrentUser()?.email || 'Admin'}</h5>
+                                <p class="text-muted">Administrador</p>
+                            </div>
+                            <form id="profileForm">
+                                <div class="mb-3">
+                                    <label class="form-label">Nome</label>
+                                    <input type="text" class="form-control" value="Administrador" id="profileName">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-control" value="${this.getCurrentUser()?.email || ''}" id="profileEmail" readonly>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Nova Senha</label>
+                                    <input type="password" class="form-control" placeholder="Deixe em branco para manter a atual">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Confirmar Nova Senha</label>
+                                    <input type="password" class="form-control" placeholder="Confirme a nova senha">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-primary" onclick="adminPanel.saveProfile()">Salvar Alterações</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        // Remover modal existente se houver
+        const existingModal = document.getElementById('profileModal');
+        if (existingModal) {
+            existingModal.remove();
+        }
+        
+        // Adicionar novo modal ao body
+        document.body.insertAdjacentHTML('beforeend', profileModal);
+        
+        // Mostrar modal
+        const modal = new bootstrap.Modal(document.getElementById('profileModal'));
+        modal.show();
+    }
+    
+    showNotifications() {
+        // Criar modal de notificações dinamicamente
+        const notificationsModal = `
+            <div class="modal fade" id="notificationsModal" tabindex="-1">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Notificações</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="notification-list">
+                                <div class="notification-item unread">
+                                    <div class="notification-icon bg-primary">
+                                        <i class="bi bi-file-text"></i>
+                                    </div>
+                                    <div class="notification-content">
+                                        <h6>Novo artigo publicado</h6>
+                                        <p>O artigo "Ubatuba lança licitação" foi publicado com sucesso.</p>
+                                        <small class="text-muted">2 horas atrás</small>
+                                    </div>
+                                    <button class="btn btn-sm btn-outline-primary">Ver</button>
+                                </div>
+                                <div class="notification-item unread">
+                                    <div class="notification-icon bg-success">
+                                        <i class="bi bi-person-plus"></i>
+                                    </div>
+                                    <div class="notification-content">
+                                        <h6>Novo usuário registrado</h6>
+                                        <p>Um novo usuário se cadastrou no sistema.</p>
+                                        <small class="text-muted">4 horas atrás</small>
+                                    </div>
+                                    <button class="btn btn-sm btn-outline-primary">Ver</button>
+                                </div>
+                                <div class="notification-item">
+                                    <div class="notification-icon bg-warning">
+                                        <i class="bi bi-exclamation-triangle"></i>
+                                    </div>
+                                    <div class="notification-content">
+                                        <h6>Backup automático</h6>
+                                        <p>Backup do sistema realizado com sucesso.</p>
+                                        <small class="text-muted">1 dia atrás</small>
+                                    </div>
+                                    <button class="btn btn-sm btn-outline-secondary">Ver</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-primary" onclick="adminPanel.markAllAsRead()">Marcar todas como lidas</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        // Remover modal existente se houver
+        const existingModal = document.getElementById('notificationsModal');
+        if (existingModal) {
+            existingModal.remove();
+        }
+        
+        // Adicionar novo modal ao body
+        document.body.insertAdjacentHTML('beforeend', notificationsModal);
+        
+        // Mostrar modal
+        const modal = new bootstrap.Modal(document.getElementById('notificationsModal'));
+        modal.show();
+    }
+    
+    getCurrentUser() {
+        if (window.netlifyIdentity) {
+            return netlifyIdentity.currentUser();
+        }
+        return null;
+    }
+    
+    saveProfile() {
+        this.showNotification('Perfil atualizado com sucesso!', 'success');
+        bootstrap.Modal.getInstance(document.getElementById('profileModal')).hide();
+    }
+    
+    markAllAsRead() {
+        this.showNotification('Todas as notificações foram marcadas como lidas!', 'success');
+        document.getElementById('notificationCount').textContent = '0';
+        bootstrap.Modal.getInstance(document.getElementById('notificationsModal')).hide();
+    }
+    
     createArticle() {
         // Simulate article creation
         const form = document.getElementById('newArticleForm');
@@ -703,9 +867,11 @@ class AdminPanel {
     }
     
     logout() {
+        console.log('🚪 Fazendo logout...');
         if (window.netlifyIdentity) {
             netlifyIdentity.logout();
         } else {
+            console.log('⚠️ Netlify Identity não disponível, redirecionando...');
             window.location.href = '/';
         }
     }
