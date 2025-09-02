@@ -13,6 +13,9 @@ function isAdminEmail(email) {
     return window.ADMIN_EMAILS.includes(email.toLowerCase());
 }
 
+// Flag para evitar verificações duplicadas
+let permissionsChecked = false;
+
 document.addEventListener('DOMContentLoaded', function() {
     // Aguarda o Netlify Identity carregar
     if (window.netlifyIdentity) {
@@ -36,7 +39,7 @@ function protectAdminPages() {
     const isAdminPage = window.location.pathname.includes('/admin') || 
                        window.location.pathname.includes('dashboard.html');
     
-    if (isAdminPage) {
+    if (isAdminPage && !permissionsChecked) {
         console.log('🔒 Página admin detectada, verificando permissões...');
         
         if (window.netlifyIdentity) {
@@ -55,7 +58,14 @@ function protectAdminPages() {
 
 // Função para verificar role do usuário
 async function checkUserRole(user) {
+    if (permissionsChecked) {
+        console.log('🔄 Permissões já verificadas, pulando...');
+        return;
+    }
+    
     try {
+        console.log('🔍 Verificando permissões para:', user.email);
+        
         // Busca informações detalhadas do usuário
         const response = await fetch('/.netlify/identity/user', {
             headers: {
@@ -70,21 +80,26 @@ async function checkUserRole(user) {
             // Verifica se tem role admin ou se é email autorizado
             if (userData.app_metadata && userData.app_metadata.roles && userData.app_metadata.roles.includes('admin')) {
                 console.log('✅ Usuário é admin por role, acesso permitido!');
+                permissionsChecked = true;
                 showAdminContent();
             } else if (isAdminEmail(user.email)) {
                 console.log('✅ Email admin autorizado detectado, acesso permitido!');
+                permissionsChecked = true;
                 showAdminContent();
             } else {
                 console.log('❌ Usuário não é admin, acesso negado!');
+                permissionsChecked = true;
                 denyAccess();
             }
         } else {
             // Fallback: verifica se é email admin autorizado
             if (isAdminEmail(user.email)) {
                 console.log('✅ Email admin autorizado detectado, acesso permitido!');
+                permissionsChecked = true;
                 showAdminContent();
             } else {
                 console.log('❌ Usuário não autorizado, acesso negado!');
+                permissionsChecked = true;
                 denyAccess();
             }
         }
@@ -93,9 +108,11 @@ async function checkUserRole(user) {
         // Fallback: verifica se é email admin autorizado
         if (isAdminEmail(user.email)) {
             console.log('✅ Email admin autorizado detectado, acesso permitido!');
+            permissionsChecked = true;
             showAdminContent();
         } else {
             console.log('❌ Usuário não autorizado, acesso negado!');
+            permissionsChecked = true;
             denyAccess();
         }
     }
@@ -104,6 +121,19 @@ async function checkUserRole(user) {
 // Função para mostrar conteúdo admin
 function showAdminContent() {
     console.log('🎉 Conteúdo admin liberado!');
+    
+    // Esconde a tela de loading
+    const loadingScreen = document.getElementById('loadingScreen');
+    if (loadingScreen) {
+        loadingScreen.style.display = 'none';
+    }
+    
+    // Mostra o container admin
+    const adminContainer = document.getElementById('adminContainer');
+    if (adminContainer) {
+        adminContainer.style.display = 'flex';
+    }
+    
     // Remove qualquer bloqueio de conteúdo
     const adminBlocks = document.querySelectorAll('.admin-block');
     adminBlocks.forEach(block => block.style.display = 'block');
@@ -112,6 +142,12 @@ function showAdminContent() {
 // Função para negar acesso
 function denyAccess() {
     console.log('🚫 Acesso negado ao painel admin!');
+    
+    // Esconde a tela de loading
+    const loadingScreen = document.getElementById('loadingScreen');
+    if (loadingScreen) {
+        loadingScreen.style.display = 'none';
+    }
     
     // Mostra mensagem de erro
     const body = document.body;
@@ -238,6 +274,8 @@ if (window.netlifyIdentity) {
             // Se estiver em página admin, verifica permissões
             if (window.location.pathname.includes('/admin') || 
                 window.location.pathname.includes('dashboard.html')) {
+                // Reseta flag para permitir nova verificação
+                permissionsChecked = false;
                 checkUserRole(user);
             }
             // REMOVIDO: redirecionamento automático para admin
@@ -265,6 +303,8 @@ if (window.netlifyIdentity) {
             // Se estiver em página admin, verifica permissões
             if (window.location.pathname.includes('/admin') || 
                 window.location.pathname.includes('dashboard.html')) {
+                // Reseta flag para permitir nova verificação
+                permissionsChecked = false;
                 checkUserRole(user);
             }
             // REMOVIDO: redirecionamento automático para admin
