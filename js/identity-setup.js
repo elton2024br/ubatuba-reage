@@ -239,12 +239,9 @@ if (window.netlifyIdentity) {
             if (window.location.pathname.includes('/admin') || 
                 window.location.pathname.includes('dashboard.html')) {
                 checkUserRole(user);
-            } else {
-                // Redireciona para o painel admin
-                setTimeout(() => {
-                    window.location.href = '/admin/';
-                }, 1000);
             }
+            // REMOVIDO: redirecionamento automático para admin
+            // O usuário deve navegar manualmente para /admin/ se quiser
         }
     });
     
@@ -270,6 +267,7 @@ if (window.netlifyIdentity) {
                 window.location.pathname.includes('dashboard.html')) {
                 checkUserRole(user);
             }
+            // REMOVIDO: redirecionamento automático para admin
         } else {
             console.log('🔒 Nenhum usuário logado');
         }
