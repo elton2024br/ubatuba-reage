@@ -160,6 +160,7 @@ class AdminPanel {
     loadDashboard() {
         this.updateStats();
         this.loadRecentActivity();
+        this.setupCharts(); // Recarrega os gráficos se necessário
     }
     
     loadContent() {
@@ -294,7 +295,7 @@ class AdminPanel {
                 <td>${user.lastLogin ? new Date(user.lastLogin).toLocaleDateString('pt-BR') : 'Nunca'}</td>
                 <td>
                     <div class="table-actions">
-                        <button class="btn btn-sm btn-outline-primary" onclick="adminPanel.editUser('${user.id}')">
+                        <button class="btn btn-sm btn-outline-primary" onclick="adminPanel.editArticle('${user.id}')">
                             <i class="bi bi-pencil"></i>
                         </button>
                         <button class="btn btn-sm btn-outline-warning" onclick="adminPanel.changeUserRole('${user.id}')">
@@ -325,6 +326,11 @@ class AdminPanel {
         // Views Chart
         const viewsCtx = document.getElementById('viewsChart');
         if (viewsCtx) {
+            // Destruir gráfico existente se houver
+            if (this.charts.views) {
+                this.charts.views.destroy();
+            }
+            
             this.charts.views = new Chart(viewsCtx, {
                 type: 'line',
                 data: {
@@ -366,6 +372,11 @@ class AdminPanel {
         // Categories Chart
         const categoriesCtx = document.getElementById('categoriesChart');
         if (categoriesCtx) {
+            // Destruir gráfico existente se houver
+            if (this.charts.categories) {
+                this.charts.categories.destroy();
+            }
+            
             this.charts.categories = new Chart(categoriesCtx, {
                 type: 'doughnut',
                 data: {
@@ -716,8 +727,17 @@ class AdminPanel {
     
     updateUserInfo(user) {
         if (user) {
-            document.getElementById('userName').textContent = user.email || 'Admin';
-            document.getElementById('headerUserName').textContent = user.email || 'Admin';
+            // Atualiza informações do usuário na sidebar
+            const userNameElement = document.getElementById('userName');
+            if (userNameElement) {
+                userNameElement.textContent = user.email || 'Admin';
+            }
+            
+            // Atualiza informações no header
+            const headerUserNameElement = document.getElementById('headerUserName');
+            if (headerUserNameElement) {
+                headerUserNameElement.textContent = user.email || 'Admin';
+            }
         }
     }
 }
