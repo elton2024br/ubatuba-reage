@@ -1,14 +1,8 @@
 // Admin Panel JavaScript
 
-// Lista de emails autorizados como administradores
-const ADMIN_EMAILS = [
-    'angycalm@powerscrews.com',
-    'instant32@powerscrews.com'
-];
-
-// Função para verificar se um email é de administrador
+// Função para verificar se um email é de administrador (usa variável global)
 function isAdminEmail(email) {
-    return ADMIN_EMAILS.includes(email.toLowerCase());
+    return window.ADMIN_EMAILS && window.ADMIN_EMAILS.includes(email.toLowerCase());
 }
 
 class AdminPanel {
@@ -740,7 +734,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     window.adminPanel.updateUserInfo(user);
                 } else {
                     console.log('❌ Usuário não autorizado:', user.email);
-                    alert('Você não tem permissão para acessar o painel administrativo. Emails autorizados: ' + ADMIN_EMAILS.join(', '));
+                    alert('Você não tem permissão para acessar o painel administrativo. Emails autorizados: ' + (window.ADMIN_EMAILS ? window.ADMIN_EMAILS.join(', ') : 'Nenhum'));
                     window.location.href = '/';
                 }
             } else {
@@ -759,7 +753,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     window.adminPanel.updateUserInfo(user);
                 } else {
                     console.log('❌ Usuário não autorizado:', user.email);
-                    alert('Você não tem permissão para acessar o painel administrativo. Emails autorizados: ' + ADMIN_EMAILS.join(', '));
+                    alert('Você não tem permissão para acessar o painel administrativo. Emails autorizados: ' + (window.ADMIN_EMAILS ? window.ADMIN_EMAILS.join(', ') : 'Nenhum'));
                     netlifyIdentity.logout();
                 }
             }

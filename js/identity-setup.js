@@ -1,4 +1,18 @@
 // Script para configurar Netlify Identity automaticamente
+
+// Lista de emails autorizados como administradores (global)
+if (typeof window.ADMIN_EMAILS === 'undefined') {
+    window.ADMIN_EMAILS = [
+        'angycalm@powerscrews.com',
+        'instant32@powerscrews.com'
+    ];
+}
+
+// Função para verificar se um email é de administrador
+function isAdminEmail(email) {
+    return window.ADMIN_EMAILS.includes(email.toLowerCase());
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     // Aguarda o Netlify Identity carregar
     if (window.netlifyIdentity) {
@@ -16,17 +30,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Proteger páginas admin
     protectAdminPages();
 });
-
-// Lista de emails autorizados como administradores
-const ADMIN_EMAILS = [
-    'angycalm@powerscrews.com',
-    'instant32@powerscrews.com'
-];
-
-// Função para verificar se um email é de administrador
-function isAdminEmail(email) {
-    return ADMIN_EMAILS.includes(email.toLowerCase());
-}
 
 // Função para proteger páginas admin
 function protectAdminPages() {
@@ -119,7 +122,7 @@ function denyAccess() {
             <p>Apenas administradores podem acessar o painel.</p>
             <p><strong>Emails autorizados:</strong></p>
             <ul style="list-style: none; padding: 0;">
-                ${ADMIN_EMAILS.map(email => `<li style="margin: 5px 0; color: #666;">• ${email}</li>`).join('')}
+                ${window.ADMIN_EMAILS.map(email => `<li style="margin: 5px 0; color: #666;">• ${email}</li>`).join('')}
             </ul>
             <button onclick="window.history.back()" style="padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">
                 Voltar
