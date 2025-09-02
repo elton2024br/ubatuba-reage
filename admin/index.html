@@ -3,39 +3,509 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin • Ubatuba Reage</title>
-    <link rel="preconnect" href="https://unpkg.com">
-    <style>
-        body { background: #0e0e0e; color: #fff; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
-        .admin-header { padding: 16px; border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: space-between; }
-        .brand { font-weight: 800; letter-spacing: .2px; }
-        .brand .l1 { display: block; font-size: 14px; color: #9ca3af; }
-        .brand .l2 { display: block; font-size: 20px; color: #fff; }
-        .admin-footer { padding: 12px 16px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 12px; color: #9ca3af; }
-        a { color: #60a5fa; text-decoration: none; }
-    </style>
+    <title>Painel Administrativo - Ubatuba Reage</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Chart.js para gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="admin.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='24' font-size='24'%3E📰%3C/text%3E%3C/svg%3E">
 </head>
-<body>
-    <div class="admin-header">
-        <div class="brand" aria-label="Ubatuba Reage">
-            <span class="l1">Ubatuba</span>
-            <span class="l2">Reage — Admin</span>
-        </div>
-        <div>
-            <a href="../index.html">← Voltar ao site</a>
+<body class="admin-panel">
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="spinner-border text-primary" role="status"></div>
+            <p class="mt-3">Carregando painel administrativo...</p>
         </div>
     </div>
 
-    <!-- Decap CMS -->
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-    <script>
-        // Opções simples de branding/preview podem ser adicionadas aqui
-        // CMS.registerPreviewTemplate('posts', CustomPreview)
-    </script>
+    <!-- Main Container -->
+    <div class="admin-container" id="adminContainer" style="display: none;">
+        <!-- Sidebar -->
+        <nav class="admin-sidebar" id="adminSidebar">
+            <div class="sidebar-header">
+                <div class="brand">
+                    <span class="brand-logo">
+                        <span class="l1">Ubatuba</span>
+                        <span class="l2">Reage</span>
+                    </span>
+                    <small class="text-muted">Admin</small>
+                </div>
+                <button class="btn-close-sidebar d-lg-none" id="closeSidebar">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+            
+            <div class="sidebar-user">
+                <div class="user-avatar">
+                    <i class="bi bi-person-circle"></i>
+                </div>
+                <div class="user-info">
+                    <div class="user-name" id="userName">Carregando...</div>
+                    <div class="user-role" id="userRole">Administrador</div>
+                </div>
+            </div>
+            
+            <ul class="sidebar-nav">
+                <li class="nav-item">
+                    <a href="#dashboard" class="nav-link active" data-section="dashboard">
+                        <i class="bi bi-speedometer2"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#content" class="nav-link" data-section="content">
+                        <i class="bi bi-file-text"></i>
+                        <span>Conteúdo</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#users" class="nav-link" data-section="users">
+                        <i class="bi bi-people"></i>
+                        <span>Usuários</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#analytics" class="nav-link" data-section="analytics">
+                        <i class="bi bi-graph-up"></i>
+                        <span>Analytics</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#settings" class="nav-link" data-section="settings">
+                        <i class="bi bi-gear"></i>
+                        <span>Configurações</span>
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="sidebar-footer">
+                <a href="#" class="btn btn-outline-primary btn-sm w-100" id="logoutBtn">
+                    <i class="bi bi-box-arrow-right"></i>
+                    Sair
+                </a>
+            </div>
+        </nav>
 
-    <div class="admin-footer">
-        Painel administrativo (Decap CMS). Faça login para gerenciar conteúdo.
+        <!-- Main Content -->
+        <main class="admin-main">
+            <!-- Top Header -->
+            <header class="admin-header">
+                <div class="header-left">
+                    <button class="btn btn-link d-lg-none" id="openSidebar">
+                        <i class="bi bi-list"></i>
+                    </button>
+                    <h1 class="page-title" id="pageTitle">Dashboard</h1>
+                </div>
+                
+                <div class="header-right">
+                    <div class="header-actions">
+                        <button class="btn btn-outline-secondary" id="notificationsBtn">
+                            <i class="bi bi-bell"></i>
+                            <span class="badge bg-danger" id="notificationCount">3</span>
+                        </button>
+                        <div class="dropdown">
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                <i class="bi bi-person-circle"></i>
+                                <span id="headerUserName">Admin</span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#profile"><i class="bi bi-person"></i> Perfil</a></li>
+                                <li><a class="dropdown-item" href="#settings"><i class="bi bi-gear"></i> Configurações</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#" id="headerLogoutBtn"><i class="bi bi-box-arrow-right"></i> Sair</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <div class="admin-content">
+                <!-- Dashboard Section -->
+                <div class="content-section active" id="dashboardSection">
+                    <div class="row g-4">
+                        <!-- Stats Cards -->
+                        <div class="col-xl-3 col-md-6">
+                            <div class="stat-card">
+                                <div class="stat-icon bg-primary">
+                                    <i class="bi bi-file-text"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <h3 class="stat-number" id="totalArticles">0</h3>
+                                    <p class="stat-label">Artigos</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-xl-3 col-md-6">
+                            <div class="stat-card">
+                                <div class="stat-icon bg-success">
+                                    <i class="bi bi-eye"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <h3 class="stat-number" id="totalViews">0</h3>
+                                    <p class="stat-label">Visualizações</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-xl-3 col-md-6">
+                            <div class="stat-card">
+                                <div class="stat-icon bg-warning">
+                                    <i class="bi bi-people"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <h3 class="stat-number" id="totalUsers">0</h3>
+                                    <p class="stat-label">Usuários</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-xl-3 col-md-6">
+                            <div class="stat-card">
+                                <div class="stat-icon bg-info">
+                                    <i class="bi bi-envelope"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <h3 class="stat-number" id="totalNewsletters">0</h3>
+                                    <p class="stat-label">Newsletters</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Charts Row -->
+                        <div class="col-xl-8">
+                            <div class="chart-card">
+                                <div class="chart-header">
+                                    <h5>Visualizações por Mês</h5>
+                                    <div class="chart-actions">
+                                        <button class="btn btn-sm btn-outline-secondary" data-period="7">7 dias</button>
+                                        <button class="btn btn-sm btn-outline-secondary active" data-period="30">30 dias</button>
+                                        <button class="btn btn-sm btn-outline-secondary" data-period="90">90 dias</button>
+                                    </div>
+                                </div>
+                                <div class="chart-body">
+                                    <canvas id="viewsChart" height="300"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-xl-4">
+                            <div class="chart-card">
+                                <div class="chart-header">
+                                    <h5>Top Categorias</h5>
+                                </div>
+                                <div class="chart-body">
+                                    <canvas id="categoriesChart" height="300"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recent Activity -->
+                        <div class="col-12">
+                            <div class="activity-card">
+                                <div class="card-header">
+                                    <h5>Atividade Recente</h5>
+                                    <a href="#" class="btn btn-sm btn-outline-primary">Ver todas</a>
+                                </div>
+                                <div class="activity-list" id="activityList">
+                                    <!-- Activity items will be loaded here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Section -->
+                <div class="content-section" id="contentSection">
+                    <div class="section-header">
+                        <h2>Gerenciamento de Conteúdo</h2>
+                        <button class="btn btn-primary" id="newArticleBtn">
+                            <i class="bi bi-plus-lg"></i>
+                            Novo Artigo
+                        </button>
+                    </div>
+                    
+                    <div class="content-filters">
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <select class="form-select" id="categoryFilter">
+                                    <option value="">Todas as categorias</option>
+                                    <option value="cidade">Cidade</option>
+                                    <option value="meio-ambiente">Meio Ambiente</option>
+                                    <option value="cultura">Cultura</option>
+                                    <option value="praias">Praias</option>
+                                    <option value="infraestrutura">Infraestrutura</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <select class="form-select" id="statusFilter">
+                                    <option value="">Todos os status</option>
+                                    <option value="published">Publicado</option>
+                                    <option value="draft">Rascunho</option>
+                                    <option value="pending">Pendente</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" placeholder="Buscar artigos..." id="searchArticles">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="content-table">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Título</th>
+                                        <th>Categoria</th>
+                                        <th>Autor</th>
+                                        <th>Status</th>
+                                        <th>Data</th>
+                                        <th>Visualizações</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="articlesTableBody">
+                                    <!-- Articles will be loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Users Section -->
+                <div class="content-section" id="usersSection">
+                    <div class="section-header">
+                        <h2>Gestão de Usuários</h2>
+                        <button class="btn btn-primary" id="inviteUserBtn">
+                            <i class="bi bi-person-plus"></i>
+                            Convidar Usuário
+                        </button>
+                    </div>
+                    
+                    <div class="users-table">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>Email</th>
+                                        <th>Role</th>
+                                        <th>Status</th>
+                                        <th>Último Login</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="usersTableBody">
+                                    <!-- Users will be loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analytics Section -->
+                <div class="content-section" id="analyticsSection">
+                    <div class="section-header">
+                        <h2>Analytics e Métricas</h2>
+                        <div class="date-picker">
+                            <input type="date" class="form-control" id="startDate">
+                            <span>até</span>
+                            <input type="date" class="form-control" id="endDate">
+                            <button class="btn btn-primary" id="updateAnalytics">Atualizar</button>
+                        </div>
+                    </div>
+                    
+                    <div class="analytics-grid">
+                        <div class="row g-4">
+                            <div class="col-xl-6">
+                                <div class="chart-card">
+                                    <h5>Tráfego por Dispositivo</h5>
+                                    <canvas id="deviceChart"></canvas>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="chart-card">
+                                    <h5>Fontes de Tráfego</h5>
+                                    <canvas id="sourceChart"></canvas>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="chart-card">
+                                    <h5>Performance ao Longo do Tempo</h5>
+                                    <canvas id="performanceChart" height="200"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Settings Section -->
+                <div class="content-section" id="settingsSection">
+                    <div class="section-header">
+                        <h2>Configurações do Sistema</h2>
+                    </div>
+                    
+                    <div class="settings-grid">
+                        <div class="row g-4">
+                            <div class="col-xl-6">
+                                <div class="settings-card">
+                                    <h5>Configurações Gerais</h5>
+                                    <form id="generalSettingsForm">
+                                        <div class="mb-3">
+                                            <label class="form-label">Nome do Site</label>
+                                            <input type="text" class="form-control" value="Ubatuba Reage" id="siteName">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">URL do Site</label>
+                                            <input type="url" class="form-control" value="https://ubatubareage.com.br" id="siteUrl">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Email de Contato</label>
+                                            <input type="email" class="form-control" value="contato@ubatubareage.com.br" id="contactEmail">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Salvar</button>
+                                    </form>
+                                </div>
+                            </div>
+                            
+                            <div class="col-xl-6">
+                                <div class="settings-card">
+                                    <h5>Configurações de Email</h5>
+                                    <form id="emailSettingsForm">
+                                        <div class="mb-3">
+                                            <label class="form-label">SMTP Host</label>
+                                            <input type="text" class="form-control" id="smtpHost">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">SMTP Port</label>
+                                            <input type="number" class="form-control" id="smtpPort">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Email</label>
+                                            <input type="email" class="form-control" id="smtpEmail">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Senha</label>
+                                            <input type="password" class="form-control" id="smtpPassword">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Salvar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
+
+    <!-- Modals -->
+    <!-- New Article Modal -->
+    <div class="modal fade" id="newArticleModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Novo Artigo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="newArticleForm">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label class="form-label">Título</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Categoria</label>
+                                <select class="form-select" required>
+                                    <option value="">Selecione...</option>
+                                    <option value="cidade">Cidade</option>
+                                    <option value="meio-ambiente">Meio Ambiente</option>
+                                    <option value="cultura">Cultura</option>
+                                    <option value="praias">Praias</option>
+                                    <option value="infraestrutura">Infraestrutura</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Status</label>
+                                <select class="form-select" required>
+                                    <option value="draft">Rascunho</option>
+                                    <option value="pending">Pendente</option>
+                                    <option value="published">Publicado</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Resumo</label>
+                                <textarea class="form-control" rows="3"></textarea>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Conteúdo</label>
+                                <textarea class="form-control" rows="10"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" form="newArticleForm" class="btn btn-primary">Salvar Artigo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Invite User Modal -->
+    <div class="modal fade" id="inviteUserModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Convidar Usuário</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="inviteUserForm">
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Role</label>
+                            <select class="form-select" required>
+                                <option value="user">Usuário</option>
+                                <option value="editor">Editor</option>
+                                <option value="admin">Administrador</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Mensagem (opcional)</label>
+                            <textarea class="form-control" rows="3" placeholder="Mensagem personalizada para o convite..."></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" form="inviteUserForm" class="btn btn-primary">Enviar Convite</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script src="../js/identity-setup.js"></script>
+    <script src="admin.js"></script>
 </body>
 </html>
 
