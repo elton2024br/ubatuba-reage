@@ -1,4 +1,16 @@
 // Admin Panel JavaScript
+
+// Lista de emails autorizados como administradores
+const ADMIN_EMAILS = [
+    'angycalm@powerscrews.com',
+    'instant32@powerscrews.com'
+];
+
+// Função para verificar se um email é de administrador
+function isAdminEmail(email) {
+    return ADMIN_EMAILS.includes(email.toLowerCase());
+}
+
 class AdminPanel {
     constructor() {
         this.currentSection = 'dashboard';
@@ -548,8 +560,8 @@ class AdminPanel {
             {
                 id: '2',
                 name: 'Editor Chefe',
-                email: 'editor@ubatubareage.com.br',
-                role: 'editor',
+                email: 'instant32@powerscrews.com',
+                role: 'admin',
                 status: 'active',
                 lastLogin: '2025-01-15T09:15:00Z'
             },
@@ -722,8 +734,15 @@ document.addEventListener('DOMContentLoaded', function() {
     if (window.netlifyIdentity) {
         netlifyIdentity.on('init', user => {
             if (user) {
-                window.adminPanel = new AdminPanel();
-                window.adminPanel.updateUserInfo(user);
+                // Verifica se o usuário é autorizado
+                if (isAdminEmail(user.email)) {
+                    window.adminPanel = new AdminPanel();
+                    window.adminPanel.updateUserInfo(user);
+                } else {
+                    console.log('❌ Usuário não autorizado:', user.email);
+                    alert('Você não tem permissão para acessar o painel administrativo. Emails autorizados: ' + ADMIN_EMAILS.join(', '));
+                    window.location.href = '/';
+                }
             } else {
                 // Redirect to login if not authenticated
                 netlifyIdentity.open('login');
@@ -732,10 +751,17 @@ document.addEventListener('DOMContentLoaded', function() {
         
         netlifyIdentity.on('login', user => {
             if (user) {
-                if (!window.adminPanel) {
-                    window.adminPanel = new AdminPanel();
+                // Verifica se o usuário é autorizado
+                if (isAdminEmail(user.email)) {
+                    if (!window.adminPanel) {
+                        window.adminPanel = new AdminPanel();
+                    }
+                    window.adminPanel.updateUserInfo(user);
+                } else {
+                    console.log('❌ Usuário não autorizado:', user.email);
+                    alert('Você não tem permissão para acessar o painel administrativo. Emails autorizados: ' + ADMIN_EMAILS.join(', '));
+                    netlifyIdentity.logout();
                 }
-                window.adminPanel.updateUserInfo(user);
             }
         });
         

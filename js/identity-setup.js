@@ -17,6 +17,17 @@ document.addEventListener('DOMContentLoaded', function() {
     protectAdminPages();
 });
 
+// Lista de emails autorizados como administradores
+const ADMIN_EMAILS = [
+    'angycalm@powerscrews.com',
+    'instant32@powerscrews.com'
+];
+
+// Função para verificar se um email é de administrador
+function isAdminEmail(email) {
+    return ADMIN_EMAILS.includes(email.toLowerCase());
+}
+
 // Função para proteger páginas admin
 function protectAdminPages() {
     const isAdminPage = window.location.pathname.includes('/admin') || 
@@ -53,17 +64,21 @@ async function checkUserRole(user) {
             const userData = await response.json();
             console.log('👤 Dados do usuário:', userData);
             
-            if (userData.role === 'admin') {
-                console.log('✅ Usuário é admin, acesso permitido!');
+            // Verifica se tem role admin ou se é email autorizado
+            if (userData.app_metadata && userData.app_metadata.roles && userData.app_metadata.roles.includes('admin')) {
+                console.log('✅ Usuário é admin por role, acesso permitido!');
+                showAdminContent();
+            } else if (isAdminEmail(user.email)) {
+                console.log('✅ Email admin autorizado detectado, acesso permitido!');
                 showAdminContent();
             } else {
                 console.log('❌ Usuário não é admin, acesso negado!');
                 denyAccess();
             }
         } else {
-            // Fallback: verifica se é o email admin
-            if (user.email === 'angycalm@powerscrews.com') {
-                console.log('✅ Email admin detectado, acesso permitido!');
+            // Fallback: verifica se é email admin autorizado
+            if (isAdminEmail(user.email)) {
+                console.log('✅ Email admin autorizado detectado, acesso permitido!');
                 showAdminContent();
             } else {
                 console.log('❌ Usuário não autorizado, acesso negado!');
@@ -72,9 +87,9 @@ async function checkUserRole(user) {
         }
     } catch (error) {
         console.error('Erro ao verificar role:', error);
-        // Fallback: verifica se é o email admin
-        if (user.email === 'angycalm@powerscrews.com') {
-            console.log('✅ Email admin detectado, acesso permitido!');
+        // Fallback: verifica se é email admin autorizado
+        if (isAdminEmail(user.email)) {
+            console.log('✅ Email admin autorizado detectado, acesso permitido!');
             showAdminContent();
         } else {
             console.log('❌ Usuário não autorizado, acesso negado!');
@@ -102,6 +117,10 @@ function denyAccess() {
             <h1 style="color: #dc3545;">🚫 Acesso Negado</h1>
             <p>Você não tem permissão para acessar esta página.</p>
             <p>Apenas administradores podem acessar o painel.</p>
+            <p><strong>Emails autorizados:</strong></p>
+            <ul style="list-style: none; padding: 0;">
+                ${ADMIN_EMAILS.map(email => `<li style="margin: 5px 0; color: #666;">• ${email}</li>`).join('')}
+            </ul>
             <button onclick="window.history.back()" style="padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">
                 Voltar
             </button>
