@@ -1,5 +1,3 @@
-const { getAuth } = require('@netlify/identity-widget');
-
 exports.handler = async (event, context) => {
   // Verifica se é uma requisição POST
   if (event.httpMethod !== 'POST') {
@@ -19,20 +17,21 @@ exports.handler = async (event, context) => {
       };
     }
 
-    // Aqui você pode implementar a lógica para confirmar o email
-    // Por enquanto, vamos retornar sucesso
+    // Log para debug
     console.log(`Confirmando email para: ${email}`);
     
+    // Retorna sucesso (a confirmação real seria feita via API do Netlify)
     return {
       statusCode: 200,
       body: JSON.stringify({ 
-        message: 'Email confirmed successfully',
-        email: email
+        message: 'Email confirmation request received',
+        email: email,
+        note: 'Check your email for confirmation link'
       })
     };
     
   } catch (error) {
-    console.error('Erro ao confirmar email:', error);
+    console.error('Erro ao processar confirmação de email:', error);
     
     return {
       statusCode: 500,

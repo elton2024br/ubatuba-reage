@@ -1,0 +1,17 @@
+{
+  "name": "ubatuba-reage",
+  "version": "1.0.0",
+  "description": "Site de jornalismo investigativo de Ubatuba",
+  "main": "index.html",
+  "scripts": {
+    "build": "echo 'Build completed'",
+    "dev": "echo 'Development server'"
+  },
+  "dependencies": {
+    "@netlify/identity-widget": "^1.9.2"
+  },
+  "devDependencies": {},
+  "keywords": ["jornalismo", "ubatuba", "investigativo"],
+  "author": "Ubatuba Reage",
+  "license": "MIT"
+}
