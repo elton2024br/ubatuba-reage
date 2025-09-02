@@ -21,6 +21,10 @@
   ADMIN_EMAIL = "angycalm@powerscrews.com"
   ADMIN_PASSWORD = "admin123456"
 
+# Netlify Identity - Desabilitar confirmação de email
+[context.production.environment]
+  NETLIFY_IDENTITY_CONFIRM_EMAIL = "false"
+
 # Security headers (basic)
 [[headers]]
   for = "/*"
