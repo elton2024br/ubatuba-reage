@@ -40,10 +40,29 @@ async function createUser() {
         // Abre o modal de signup
         netlifyIdentity.open('signup');
         
-        // Aguarda o modal carregar
-        setTimeout(() => {
-            fillSignupForm();
-        }, 1000);
+        // Aguarda o modal carregar e tenta preencher múltiplas vezes
+        let attempts = 0;
+        const maxAttempts = 10;
+        
+        const tryFillForm = () => {
+            attempts++;
+            console.log(`Tentativa ${attempts} de preencher formulário...`);
+            
+            if (fillSignupForm()) {
+                console.log('✅ Formulário preenchido com sucesso!');
+                return;
+            }
+            
+            if (attempts < maxAttempts) {
+                console.log(`⏳ Aguardando modal carregar... (${attempts}/${maxAttempts})`);
+                setTimeout(tryFillForm, 500);
+            } else {
+                console.log('❌ Não foi possível preencher o formulário após várias tentativas');
+            }
+        };
+        
+        setTimeout(tryFillForm, 1000);
+        
     } catch (error) {
         console.error('Erro ao abrir signup:', error);
     }
@@ -70,11 +89,14 @@ function fillSignupForm() {
         if (signupButton) {
             console.log('Clicando no botão de signup...');
             signupButton.click();
+            return true;
         } else {
             console.log('Botão de signup não encontrado');
+            return false;
         }
     } else {
         console.log('Campos de formulário não encontrados');
+        return false;
     }
 }
 

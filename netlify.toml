@@ -21,6 +21,7 @@
   ADMIN_EMAIL = "angycalm@powerscrews.com"
   ADMIN_PASSWORD = "admin123456"
   NETLIFY_IDENTITY_CONFIRM_EMAIL = "false"
+  NETLIFY_IDENTITY_PUBLIC_SIGNUPS = "true"
 
 # Security headers (basic)
 [[headers]]
