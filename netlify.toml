@@ -10,21 +10,14 @@
   to = "/index.html"
   status = 200
 
-[context.production.environment]
-  NODE_ENV = "production"
-
-# Netlify Identity
-[context.production.environment]
-  NETLIFY_USE_YARN = "true"
-
-# Criar usuário admin automaticamente
 [[redirects]]
   from = "/admin"
   to = "/admin.html"
   status = 200
 
-# Configuração do usuário admin
 [context.production.environment]
+  NODE_ENV = "production"
+  NETLIFY_USE_YARN = "true"
   ADMIN_EMAIL = "angycalm@powerscrews.com"
   ADMIN_PASSWORD = "admin123456"
 
