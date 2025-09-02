@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Ubatuba Reage</title>
+    <meta name="description" content="Entre em contato com o Ubatuba Reage. Fale conosco, tire dúvidas, sugira pautas ou envie críticas construtivas.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ubatubareage.com.br/contato">
+    <meta property="og:title" content="Contato - Ubatuba Reage">
+    <meta property="og:description" content="Entre em contato com o Ubatuba Reage. Fale conosco, tire dúvidas, sugira pautas.">
+    <meta property="og:image" content="https://ubatubareage.com.br/assets/og-contato.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://ubatubareage.com.br/contato">
+    <meta property="twitter:title" content="Contato - Ubatuba Reage">
+    <meta property="twitter:description" content="Entre em contato com o Ubatuba Reage.">
+    <meta property="twitter:image" content="https://ubatubareage.com.br/assets/og-contato.jpg">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header-main bg-dark sticky-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark py-3">
+                <div class="d-flex align-items-center">
+                    <button class="navbar-toggler border-0 p-0 me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu">
+                        <div class="hamburger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </button>
+                    
+                    <a class="navbar-brand d-flex align-items-center" href="index.html">
+                        <div class="logo-text">
+                            <span class="logo-main">Ubatuba Reage</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="d-flex align-items-center">
+                    <button class="btn btn-link text-white p-0 me-3" type="button">
+                        <i class="bi bi-search fs-5"></i>
+                    </button>
+                    <a href="apoie.html" class="btn btn-primary btn-sm">Apoie</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="offcanvasMenu">
+        <div class="offcanvas-header border-bottom border-secondary">
+            <h5 class="offcanvas-title">Menu</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="nav flex-column">
+                <a class="nav-link text-white py-2" href="index.html">Início</a>
+                <a class="nav-link text-white py-2" href="categoria/cidade.html">Cidade</a>
+                <a class="nav-link text-white py-2" href="categoria/meio-ambiente.html">Meio Ambiente</a>
+                <a class="nav-link text-white py-2" href="categoria/cultura.html">Cultura</a>
+                <a class="nav-link text-white py-2" href="categoria/praias.html">Praias</a>
+                <hr class="my-3">
+                <a class="nav-link text-white py-2" href="sobre.html">Sobre</a>
+                <a class="nav-link text-white py-2" href="fontes.html">Seja nossa fonte</a>
+                <a class="nav-link text-white py-2 active" href="contato.html">Contato</a>
+                <a class="nav-link text-white py-2" href="apoie.html">Apoie</a>
+                <!-- Auth links will be dynamically inserted here by auth.js -->
+                <div id="auth-menu-items"></div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="py-5">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb" class="mb-4">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Início</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Contato</li>
+                </ol>
+            </nav>
+
+            <!-- Header -->
+            <div class="row mb-5">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="display-5 fw-bold mb-4">📞 Fale Conosco</h1>
+                    <p class="lead text-muted">
+                        Sua voz é importante para nós. Entre em contato para sugerir pautas, 
+                        tirar dúvidas, fazer críticas construtivas ou simplesmente conversar.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Contact Form -->
+                <div class="col-lg-8">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <h3 class="h4 mb-4">💬 Envie sua Mensagem</h3>
+                            
+                            <form name="contato" method="POST" data-netlify="true" data-netlify-recaptcha="true" data-recaptcha data-recaptcha-action="contato">
+                                <!-- Hidden fields for Netlify -->
+                                <input type="hidden" name="form-name" value="contato">
+                                <input type="hidden" name="timestamp" id="timestamp">
+                                
+                                <div class="row g-3">
+                                    <!-- Name -->
+                                    <div class="col-md-6">
+                                        <label for="nome" class="form-label">Nome *</label>
+                                        <input type="text" class="form-control" id="nome" name="nome" required>
+                                    </div>
+                                    
+                                    <!-- Email -->
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label">Email *</label>
+                                        <input type="email" class="form-control" id="email" name="email" required>
+                                    </div>
+                                    
+                                    <!-- Phone -->
+                                    <div class="col-md-6">
+                                        <label for="telefone" class="form-label">Telefone</label>
+                                        <input type="tel" class="form-control" id="telefone" name="telefone" placeholder="(12) 99999-9999">
+                                    </div>
+                                    
+                                    <!-- Subject -->
+                                    <div class="col-md-6">
+                                        <label for="assunto" class="form-label">Assunto *</label>
+                                        <select class="form-select" id="assunto" name="assunto" required>
+                                            <option value="">Selecione um assunto</option>
+                                            <option value="sugestao-pauta">Sugestão de Pauta</option>
+                                            <option value="denuncia">Denúncia</option>
+                                            <option value="elogio">Elogio</option>
+                                            <option value="critica">Crítica/Sugestão</option>
+                                            <option value="parcerias">Parcerias</option>
+                                            <option value="imprensa">Imprensa</option>
+                                            <option value="suporte">Suporte Técnico</option>
+                                            <option value="outros">Outros</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <!-- Message -->
+                                    <div class="col-12">
+                                        <label for="mensagem" class="form-label">Mensagem *</label>
+                                        <textarea class="form-control" id="mensagem" name="mensagem" rows="6" required 
+                                                  placeholder="Conte-nos mais detalhes sobre sua solicitação..."></textarea>
+                                        <div class="form-text">
+                                            <span id="char-count">0</span>/2000 caracteres
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Privacy -->
+                                    <div class="col-12">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="privacidade" name="aceita_privacidade" required>
+                                            <label class="form-check-label" for="privacidade">
+                                                Aceito a <a href="privacidade.html" target="_blank">Política de Privacidade</a> *
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- reCAPTCHA -->
+                                    <div class="col-12">
+                                        <div data-netlify-recaptcha="true"></div>
+                                    </div>
+                                    
+                                    <!-- Submit Button -->
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary btn-lg">
+                                            <i class="bi bi-send me-2"></i>Enviar Mensagem
+                                        </button>
+                                        <div class="form-text mt-2">
+                                            Responderemos em até 48 horas úteis.
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="col-lg-4">
+                    <div class="sticky-top" style="top: 100px;">
+                        <!-- Direct Contact -->
+                        <div class="card border-0 shadow-sm mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">📧 Contato Direto</h5>
+                                
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-envelope-fill text-primary me-3"></i>
+                                    <div>
+                                        <strong>Email Geral</strong><br>
+                                        <a href="mailto:contato@ubatubareage.com.br" class="text-decoration-none">
+                                            contato@ubatubareage.com.br
+                                        </a>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-newspaper text-success me-3"></i>
+                                    <div>
+                                        <strong>Redação</strong><br>
+                                        <a href="mailto:redacao@ubatubareage.com.br" class="text-decoration-none">
+                                            redacao@ubatubareage.com.br
+                                        </a>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-shield-exclamation text-warning me-3"></i>
+                                    <div>
+                                        <strong>Denúncias</strong><br>
+                                        <a href="fontes.html" class="text-decoration-none">
+                                            Formulário Seguro
+                                        </a>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex align-items-center">
+                                    <i class="bi bi-whatsapp text-success me-3"></i>
+                                    <div>
+                                        <strong>WhatsApp</strong><br>
+                                        <a href="https://wa.me/5512999999999" class="text-decoration-none" target="_blank">
+                                            (12) 99999-9999
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Social Media -->
+                        <div class="card border-0 shadow-sm mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">🌐 Redes Sociais</h5>
+                                <p class="text-muted small mb-3">Siga-nos e participe da conversa:</p>
+                                
+                                <div class="d-grid gap-2">
+                                    <a href="#" class="btn btn-outline-primary btn-sm">
+                                        <i class="bi bi-facebook me-2"></i>Facebook
+                                    </a>
+                                    <a href="#" class="btn btn-outline-danger btn-sm">
+                                        <i class="bi bi-instagram me-2"></i>Instagram
+                                    </a>
+                                    <a href="#" class="btn btn-outline-info btn-sm">
+                                        <i class="bi bi-twitter me-2"></i>Twitter
+                                    </a>
+                                    <a href="#" class="btn btn-outline-success btn-sm">
+                                        <i class="bi bi-whatsapp me-2"></i>WhatsApp
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Response Time -->
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title">⏰ Tempo de Resposta</h5>
+                                
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="text-success">📧 Email Geral</span>
+                                        <small class="text-muted">48h úteis</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="text-warning">🚨 Denúncias</span>
+                                        <small class="text-muted">24h úteis</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="text-info">📱 WhatsApp</span>
+                                        <small class="text-muted">Imediato</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="alert alert-info alert-sm">
+                                    <small>
+                                        <i class="bi bi-info-circle me-1"></i>
+                                        Urgências: use WhatsApp ou formulário de denúncias.
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-main bg-dark text-white py-5 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <img src="https://uploads.intercept.com.br/2023/07/SvRNnl9L-header.svg" 
+                         alt="Ubatuba Reage" 
+                         class="footer-logo mb-3"
+                         width="140" 
+                         height="44"
+                         style="filter: brightness(0) invert(1);">
+                    <p class="text-light">
+                        Movimento cidadão independente. A voz da comunidade de Ubatuba.
+                    </p>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h6 class="text-white mb-3">Navegação</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-light text-decoration-none">Início</a></li>
+                        <li><a href="sobre.html" class="text-light text-decoration-none">Sobre</a></li>
+                        <li><a href="fontes.html" class="text-light text-decoration-none">Seja nossa fonte</a></li>
+                        <li><a href="contato.html" class="text-light text-decoration-none">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h6 class="text-white mb-3">Categorias</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="categoria/cidade.html" class="text-light text-decoration-none">Cidade</a></li>
+                        <li><a href="categoria/meio-ambiente.html" class="text-light text-decoration-none">Meio Ambiente</a></li>
+                        <li><a href="categoria/cultura.html" class="text-light text-decoration-none">Cultura</a></li>
+                        <li><a href="categoria/praias.html" class="text-light text-decoration-none">Praias</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h6 class="text-white mb-3">Redes Sociais</h6>
+                    <div class="d-flex gap-3 mb-3">
+                        <a href="#" class="text-light"><i class="bi bi-facebook fs-5"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-instagram fs-5"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-twitter fs-5"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-whatsapp fs-5"></i></a>
+                    </div>
+                    <div class="newsletter-footer">
+                        <h6 class="text-white mb-2">Newsletter</h6>
+                        <form class="d-flex">
+                            <input type="email" class="form-control form-control-sm me-2" placeholder="Seu email">
+                            <button class="btn btn-primary btn-sm" type="submit">Assinar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-4">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0 text-muted">
+                        © 2024 Ubatuba Reage. Todos os direitos reservados.
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="apoie.html" class="btn btn-primary">Apoie nosso movimento</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom Scripts -->
+    <script src="script.js"></script>
+    <script src="js/analytics.js"></script>
+    <script src="js/recaptcha.js"></script>
+    
+    <!-- Netlify Identity -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script src="js/auth.js"></script>
+
+    <script>
+        // Character counter for message textarea
+        document.getElementById('mensagem').addEventListener('input', function() {
+            const textarea = this;
+            const counter = document.getElementById('char-count');
+            const maxLength = 2000;
+            const currentLength = textarea.value.length;
+            
+            counter.textContent = currentLength;
+            
+            if (currentLength > maxLength) {
+                counter.parentElement.classList.add('text-danger');
+                textarea.classList.add('is-invalid');
+            } else {
+                counter.parentElement.classList.remove('text-danger');
+                textarea.classList.remove('is-invalid');
+            }
+        });
+
+        // Set timestamp on form load
+        document.getElementById('timestamp').value = new Date().toISOString();
+
+        // Form submission handling
+        document.querySelector('form[name="contato"]').addEventListener('submit', function(e) {
+            const button = this.querySelector('button[type="submit"]');
+            const originalText = button.innerHTML;
+            
+            button.innerHTML = '<i class="bi bi-hourglass-split me-2"></i>Enviando...';
+            button.disabled = true;
+            
+            // Re-enable button after 3 seconds (in case of error)
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.disabled = false;
+            }, 3000);
+        });
+    </script>
+</body>
+</html>

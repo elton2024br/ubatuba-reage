@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apoie o Ubatuba Reage - Fortaleça o jornalismo independente</title>
+    <meta name="description" content="Apoie o Ubatuba Reage e fortaleça o jornalismo independente da nossa cidade. Sua contribuição faz a diferença na luta por transparência e justiça.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ubatubareage.com.br/apoie">
+    <meta property="og:title" content="Apoie o Ubatuba Reage - Fortaleça o jornalismo independente">
+    <meta property="og:description" content="Apoie o Ubatuba Reage e fortaleça o jornalismo independente da nossa cidade.">
+    <meta property="og:image" content="https://ubatubareage.com.br/assets/og-apoie.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://ubatubareage.com.br/apoie">
+    <meta property="twitter:title" content="Apoie o Ubatuba Reage">
+    <meta property="twitter:description" content="Fortaleça o jornalismo independente de Ubatuba.">
+    <meta property="twitter:image" content="https://ubatubareage.com.br/assets/og-apoie.jpg">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header-main bg-dark sticky-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark py-3">
+                <div class="d-flex align-items-center">
+                    <button class="navbar-toggler border-0 p-0 me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu">
+                        <div class="hamburger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </button>
+                    
+                    <a class="navbar-brand d-flex align-items-center" href="index.html">
+                        <div class="logo-text">
+                            <span class="logo-main">Ubatuba Reage</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="d-flex align-items-center">
+                    <button class="btn btn-link text-white p-0 me-3" type="button">
+                        <i class="bi bi-search fs-5"></i>
+                    </button>
+                    <a href="apoie.html" class="btn btn-primary btn-sm">Apoie</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="offcanvasMenu">
+        <div class="offcanvas-header border-bottom border-secondary">
+            <h5 class="offcanvas-title">Menu</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="nav flex-column">
+                <a class="nav-link text-white py-2" href="index.html">Início</a>
+                <a class="nav-link text-white py-2" href="categoria/cidade.html">Cidade</a>
+                <a class="nav-link text-white py-2" href="categoria/meio-ambiente.html">Meio Ambiente</a>
+                <a class="nav-link text-white py-2" href="categoria/cultura.html">Cultura</a>
+                <a class="nav-link text-white py-2" href="categoria/praias.html">Praias</a>
+                <hr class="my-3">
+                <a class="nav-link text-white py-2" href="sobre.html">Sobre</a>
+                <a class="nav-link text-white py-2" href="fontes.html">Seja nossa fonte</a>
+                <a class="nav-link text-white py-2" href="contato.html">Contato</a>
+                <a class="nav-link text-white py-2 active" href="apoie.html">Apoie</a>
+                <!-- Auth links will be dynamically inserted here by auth.js -->
+                <div id="auth-menu-items"></div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="display-4 fw-bold mb-4">💪 Fortaleça o Ubatuba Reage</h1>
+                    <p class="lead mb-4">
+                        Seu apoio é fundamental para mantermos o jornalismo independente em Ubatuba. 
+                        Juntos, somos mais fortes na luta por transparência e justiça.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#apoiar-agora" class="btn btn-light btn-lg">
+                            <i class="bi bi-heart-fill me-2"></i>Apoiar Agora
+                        </a>
+                        <a href="#como-ajudar" class="btn btn-outline-light btn-lg">
+                            <i class="bi bi-info-circle me-2"></i>Como Ajudar
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <i class="bi bi-megaphone-fill" style="font-size: 8rem; opacity: 0.3;"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="py-5">
+        <div class="container">
+            <!-- Why Support Us -->
+            <section class="mb-5">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto text-center">
+                        <h2 class="h3 mb-4">🌊 Por que apoiar o Ubatuba Reage?</h2>
+                        <p class="lead text-muted mb-5">
+                            Somos um movimento cidadão independente, sem vínculos políticos ou empresariais. 
+                            Nossa força vem da comunidade que acredita numa Ubatuba melhor.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="text-center">
+                            <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                                <i class="bi bi-shield-check text-primary fs-2"></i>
+                            </div>
+                            <h4 class="h5">Independência Total</h4>
+                            <p class="text-muted">
+                                Não temos patrão, não temos chefe. Nossa única lealdade é com a verdade e com Ubatuba.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="text-center">
+                            <div class="bg-success bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                                <i class="bi bi-people-fill text-success fs-2"></i>
+                            </div>
+                            <h4 class="h5">Voz da Comunidade</h4>
+                            <p class="text-muted">
+                                Cada denúncia é ouvida, cada vitória é celebrada. Somos o canal entre você e as soluções.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="text-center">
+                            <div class="bg-warning bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                                <i class="bi bi-lightning-charge-fill text-warning fs-2"></i>
+                            </div>
+                            <h4 class="h5">Resultados Reais</h4>
+                            <p class="text-muted">
+                                Transformamos informação em pressão pública e pressão pública em mudanças concretas.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Support Options -->
+            <section id="apoiar-agora" class="mb-5">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h2 class="h3 text-center mb-5">💳 Como Apoiar Financeiramente</h2>
+                        
+                        <!-- PIX -->
+                        <div class="card mb-4 border-primary">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-md-2 text-center">
+                                        <i class="bi bi-qr-code text-primary" style="font-size: 3rem;"></i>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h5 class="card-title text-primary">PIX - Mais Rápido</h5>
+                                        <p class="card-text">Chave PIX: <strong>apoie@ubatubareage.com.br</strong></p>
+                                        <p class="text-muted small">Qualquer valor faz diferença. Sua doação vai direto para o trabalho jornalístico.</p>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <button class="btn btn-primary" onclick="copyPix()">
+                                            <i class="bi bi-clipboard"></i> Copiar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Monthly Support -->
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-md-2 text-center">
+                                        <i class="bi bi-calendar-heart text-success" style="font-size: 3rem;"></i>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h5 class="card-title text-success">Apoio Mensal - Mais Sustentável</h5>
+                                        <p class="card-text">Torne-se um apoiador recorrente e ajude a manter nossa independência.</p>
+                                        <div class="d-flex flex-wrap gap-2 mt-3">
+                                            <button class="btn btn-outline-success btn-sm">R$ 10/mês</button>
+                                            <button class="btn btn-outline-success btn-sm">R$ 25/mês</button>
+                                            <button class="btn btn-outline-success btn-sm">R$ 50/mês</button>
+                                            <button class="btn btn-outline-success btn-sm">Outro valor</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <button class="btn btn-success">
+                                            Assinar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bank Transfer -->
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-md-2 text-center">
+                                        <i class="bi bi-bank text-info" style="font-size: 3rem;"></i>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <h5 class="card-title text-info">Transferência Bancária</h5>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <p class="mb-1"><strong>Banco:</strong> Banco do Brasil</p>
+                                                <p class="mb-1"><strong>Agência:</strong> 1234-5</p>
+                                                <p class="mb-1"><strong>Conta:</strong> 12345-6</p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p class="mb-1"><strong>Favorecido:</strong> Ubatuba Reage</p>
+                                                <p class="mb-1"><strong>CNPJ:</strong> 12.345.678/0001-90</p>
+                                                <p class="mb-1"><strong>Tipo:</strong> Conta Corrente</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Other Ways to Help -->
+            <section id="como-ajudar" class="mb-5 bg-light py-5 rounded">
+                <div class="container">
+                    <h2 class="h3 text-center mb-5">🤝 Outras Formas de Apoiar</h2>
+                    
+                    <div class="row g-4">
+                        <div class="col-md-6 col-lg-3">
+                            <div class="text-center">
+                                <i class="bi bi-share-fill text-primary fs-1 mb-3"></i>
+                                <h5>Compartilhe</h5>
+                                <p class="text-muted">Divulgue nossas matérias nas redes sociais e amplifique nossa voz.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 col-lg-3">
+                            <div class="text-center">
+                                <i class="bi bi-envelope-fill text-success fs-1 mb-3"></i>
+                                <h5>Envie Denúncias</h5>
+                                <p class="text-muted">Seja nossa fonte. Seus relatos são nossa matéria-prima.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 col-lg-3">
+                            <div class="text-center">
+                                <i class="bi bi-chat-fill text-warning fs-1 mb-3"></i>
+                                <h5>Participe</h5>
+                                <p class="text-muted">Comente, sugira pautas, participe da construção coletiva.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 col-lg-3">
+                            <div class="text-center">
+                                <i class="bi bi-megaphone-fill text-info fs-1 mb-3"></i>
+                                <h5>Mobilize</h5>
+                                <p class="text-muted">Organize sua comunidade, cobre soluções, faça Ubatuba reagir.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Transparency -->
+            <section class="mb-5">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body p-4">
+                                <div class="text-center mb-4">
+                                    <i class="bi bi-eye-fill text-primary fs-1"></i>
+                                    <h3 class="h4 mt-3">Transparência Total</h3>
+                                </div>
+                                
+                                <p class="text-center text-muted mb-4">
+                                    Publicamos relatórios mensais sobre como utilizamos os recursos recebidos. 
+                                    Transparência não é só nossa bandeira, é nossa prática.
+                                </p>
+                                
+                                <div class="row text-center">
+                                    <div class="col-md-4">
+                                        <div class="border-end">
+                                            <h5 class="text-primary">75%</h5>
+                                            <small class="text-muted">Produção de Conteúdo</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="border-end">
+                                            <h5 class="text-success">15%</h5>
+                                            <small class="text-muted">Tecnologia e Hospedagem</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h5 class="text-warning">10%</h5>
+                                        <small class="text-muted">Reserva de Emergência</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="text-center mt-4">
+                                    <a href="#" class="btn btn-outline-primary">
+                                        <i class="bi bi-file-earmark-text me-2"></i>Ver Relatório Completo
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Thank You -->
+            <section class="text-center">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="h3 mb-4">🙏 Obrigado por Acreditar</h2>
+                    <p class="lead text-muted mb-4">
+                        Cada apoio, cada compartilhamento, cada denúncia faz diferença. 
+                        Juntos, estamos construindo uma Ubatuba mais transparente e justa.
+                    </p>
+                    <p class="text-primary fw-semibold">
+                        "Ubatuba não é terra de ninguém. É nossa."
+                    </p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-main bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <img src="https://uploads.intercept.com.br/2023/07/SvRNnl9L-header.svg" 
+                         alt="Ubatuba Reage" 
+                         class="footer-logo mb-3"
+                         width="140" 
+                         height="44"
+                         style="filter: brightness(0) invert(1);">
+                    <p class="text-light">
+                        Movimento cidadão independente. A voz da comunidade de Ubatuba.
+                    </p>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h6 class="text-white mb-3">Navegação</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-light text-decoration-none">Início</a></li>
+                        <li><a href="sobre.html" class="text-light text-decoration-none">Sobre</a></li>
+                        <li><a href="fontes.html" class="text-light text-decoration-none">Seja nossa fonte</a></li>
+                        <li><a href="contato.html" class="text-light text-decoration-none">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h6 class="text-white mb-3">Categorias</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="categoria/cidade.html" class="text-light text-decoration-none">Cidade</a></li>
+                        <li><a href="categoria/meio-ambiente.html" class="text-light text-decoration-none">Meio Ambiente</a></li>
+                        <li><a href="categoria/cultura.html" class="text-light text-decoration-none">Cultura</a></li>
+                        <li><a href="categoria/praias.html" class="text-light text-decoration-none">Praias</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h6 class="text-white mb-3">Redes Sociais</h6>
+                    <div class="d-flex gap-3 mb-3">
+                        <a href="#" class="text-light"><i class="bi bi-facebook fs-5"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-instagram fs-5"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-twitter fs-5"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-whatsapp fs-5"></i></a>
+                    </div>
+                    <div class="newsletter-footer">
+                        <h6 class="text-white mb-2">Newsletter</h6>
+                        <form class="d-flex">
+                            <input type="email" class="form-control form-control-sm me-2" placeholder="Seu email">
+                            <button class="btn btn-primary btn-sm" type="submit">Assinar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-4">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0 text-muted">
+                        © 2024 Ubatuba Reage. Todos os direitos reservados.
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="apoie.html" class="btn btn-primary">Apoie nosso movimento</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom Scripts -->
+    <script src="script.js"></script>
+    <script src="js/analytics.js"></script>
+    
+    <!-- Netlify Identity -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script src="js/auth.js"></script>
+
+    <script>
+        // Copy PIX key functionality
+        function copyPix() {
+            const pixKey = 'apoie@ubatubareage.com.br';
+            navigator.clipboard.writeText(pixKey).then(() => {
+                // Show success feedback
+                const button = event.target.closest('button');
+                const originalText = button.innerHTML;
+                button.innerHTML = '<i class="bi bi-check"></i> Copiado!';
+                button.classList.add('btn-success');
+                button.classList.remove('btn-primary');
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.classList.add('btn-primary');
+                    button.classList.remove('btn-success');
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

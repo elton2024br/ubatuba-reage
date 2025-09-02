@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidade - Ubatuba Reage</title>
+    <meta name="description" content="Política de Privacidade do Ubatuba Reage. Saiba como coletamos, usamos e protegemos seus dados pessoais.">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header-main bg-dark sticky-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark py-3">
+                <div class="d-flex align-items-center">
+                    <button class="navbar-toggler border-0 p-0 me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu">
+                        <div class="hamburger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </button>
+                    
+                    <a class="navbar-brand d-flex align-items-center" href="index.html">
+                        <div class="logo-text">
+                            <span class="logo-main">Ubatuba Reage</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="d-flex align-items-center">
+                    <button class="btn btn-link text-white p-0 me-3" type="button">
+                        <i class="bi bi-search fs-5"></i>
+                    </button>
+                    <a href="apoie.html" class="btn btn-primary btn-sm">Apoie</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="offcanvasMenu">
+        <div class="offcanvas-header border-bottom border-secondary">
+            <h5 class="offcanvas-title">Menu</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="nav flex-column">
+                <a class="nav-link text-white py-2" href="index.html">Início</a>
+                <a class="nav-link text-white py-2" href="categoria/cidade.html">Cidade</a>
+                <a class="nav-link text-white py-2" href="categoria/meio-ambiente.html">Meio Ambiente</a>
+                <a class="nav-link text-white py-2" href="categoria/cultura.html">Cultura</a>
+                <a class="nav-link text-white py-2" href="categoria/praias.html">Praias</a>
+                <hr class="my-3">
+                <a class="nav-link text-white py-2" href="sobre.html">Sobre</a>
+                <a class="nav-link text-white py-2" href="fontes.html">Seja nossa fonte</a>
+                <a class="nav-link text-white py-2" href="contato.html">Contato</a>
+                <a class="nav-link text-white py-2" href="apoie.html">Apoie</a>
+                <!-- Auth links will be dynamically inserted here by auth.js -->
+                <div id="auth-menu-items"></div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="py-5">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb" class="mb-4">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Início</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Política de Privacidade</li>
+                </ol>
+            </nav>
+
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <!-- Header -->
+                    <div class="text-center mb-5">
+                        <h1 class="display-6 fw-bold mb-3">🔒 Política de Privacidade</h1>
+                        <p class="lead text-muted">
+                            Transparência é nossa marca. Saiba exatamente como tratamos seus dados.
+                        </p>
+                        <div class="text-muted small">
+                            <i class="bi bi-calendar me-1"></i>Última atualização: 15 de dezembro de 2024
+                        </div>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <!-- Introduction -->
+                            <section class="mb-5">
+                                <h2 class="h4 text-primary mb-3">1. Introdução</h2>
+                                <p>
+                                    O <strong>Ubatuba Reage</strong> é um movimento cidadão independente comprometido com a transparência 
+                                    e a proteção da privacidade de nossos leitores e colaboradores. Esta Política de Privacidade 
+                                    explica como coletamos, usamos, armazenamos e protegemos suas informações pessoais.
+                                </p>
+                                <p>
+                                    Ao usar nosso site, você concorda com as práticas descritas nesta política. 
+                                    Se você não concordar com algum aspecto, recomendamos que não utilize nossos serviços.
+                                </p>
+                            </section>
+
+                            <!-- Data Collection -->
+                            <section class="mb-5">
+                                <h2 class="h4 text-primary mb-3">2. Informações que Coletamos</h2>
+                                
+                                <h5 class="text-secondary">2.1 Informações Fornecidas Voluntariamente</h5>
+                                <ul class="mb-3">
+                                    <li><strong>Newsletter:</strong> Nome e endereço de email</li>
+                                    <li><strong>Formulário de Contato:</strong> Nome, email, telefone (opcional) e mensagem</li>
+                                    <li><strong>Seja Nossa Fonte:</strong> Informações fornecidas voluntariamente para denúncias</li>
+                                    <li><strong>Comentários:</strong> Nome, email e conteúdo do comentário</li>
+                                    <li><strong>Apoio Financeiro:</strong> Informações necessárias para processamento de doações</li>
+                                </ul>
+
+                                <h5 class="text-secondary">2.2 Informações Coletadas Automaticamente</h5>
+                                <ul class="mb-3">
+                                    <li><strong>Dados de Navegação:</strong> Endereço IP, tipo de navegador, sistema operacional</li>
+                                    <li><strong>Cookies e Tecnologias Similares:</strong> Para melhorar a experiência do usuário</li>
+                                    <li><strong>Analytics:</strong> Dados agregados sobre uso do site (via Google Analytics)</li>
+                                    <li><strong>Interações:</strong> Páginas visitadas, tempo de permanência, links clicados</li>
+                                </ul>
+                            </section>
+
+                            <!-- Data Usage -->
+                            <section class="mb-5">
+                                <h2 class="h4 text-primary mb-3">3. Como Usamos suas Informações</h2>
+                                
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="border-start border-primary border-4 ps-3">
+                                            <h6 class="text-primary">📧 Comunicação</h6>
+                                            <ul class="small mb-0">
+                                                <li>Envio de newsletter</li>
+                                                <li>Resposta a contatos</li>
+                                                <li>Notificações importantes</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="border-start border-success border-4 ps-3">
+                                            <h6 class="text-success">📊 Análise</h6>
+                                            <ul class="small mb-0">
+                                                <li>Melhoria do conteúdo</li>
+                                                <li>Análise de audiência</li>
+                                                <li>Otimização do site</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="border-start border-warning border-4 ps-3">
+                                            <h6 class="text-warning">🛡️ Segurança</h6>
+                                            <ul class="small mb-0">
+                                                <li>Prevenção de spam</li>
+                                                <li>Proteção contra ataques</li>
+                                                <li>Moderação de conteúdo</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="border-start border-info border-4 ps-3">
+                                            <h6 class="text-info">⚖️ Legal</h6>
+                                            <ul class="small mb-0">
+                                                <li>Cumprimento de leis</li>
+                                                <li>Proteção de direitos</li>
+                                                <li>Investigações legais</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- Data Sharing -->
+                            <section class="mb-5">
+                                <h2 class="h4 text-primary mb-3">4. Compartilhamento de Informações</h2>
+                                
+                                <div class="alert alert-success">
+                                    <h6 class="alert-heading">
+                                        <i class="bi bi-shield-check me-2"></i>Princípio Fundamental
+                                    </h6>
+                                    <p class="mb-0">
+                                        <strong>Não vendemos, alugamos ou comercializamos seus dados pessoais.</strong> 
+                                        Compartilhamos informações apenas nas situações específicas descritas abaixo.
+                                    </p>
+                                </div>
+
+                                <h5 class="text-secondary">4.1 Compartilhamento Autorizado</h5>
+                                <ul class="mb-3">
+                                    <li><strong>Prestadores de Serviço:</strong> Netlify (hospedagem), Google (analytics), Disqus (comentários)</li>
+                                    <li><strong>Processamento de Pagamentos:</strong> Apenas dados necessários para doações</li>
+                                    <li><strong>Com Seu Consentimento:</strong> Quando você autoriza expressamente</li>
+                                </ul>
+
+                                <h5 class="text-secondary">4.2 Compartilhamento Legal</h5>
+                                <ul>
+                                    <li>Cumprimento de ordens judiciais</li>
+                                    <li>Proteção de direitos e segurança</li>
+                                    <li>Investigações de atividades ilegais</li>
+                                </ul>
+                            </section>
+
+                            <!-- Data Protection -->
+                            <section class="mb-5">
+                                <h2 class="h4 text-primary mb-3">5. Proteção de Dados</h2>
+                                
+                                <div class="row g-3 mb-4">
+                                    <div class="col-md-4">
+                                        <div class="text-center p-3 bg-light rounded">
+                                            <i class="bi bi-lock-fill text-primary fs-2 mb-2"></i>
+                                            <h6>Criptografia SSL</h6>
+                                            <small class="text-muted">Comunicação segura</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="text-center p-3 bg-light rounded">
+                                            <i class="bi bi-server text-success fs-2 mb-2"></i>
+                                            <h6>Servidores Seguros</h6>
+                                            <small class="text-muted">Infraestrutura protegida</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="text-center p-3 bg-light rounded">
+                                            <i class="bi bi-person-check-fill text-warning fs-2 mb-2"></i>
+                                            <h6>Acesso Limitado</h6>
+                                            <small class="text-muted">Apenas pessoal autorizado</small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <p>
+                                    Implementamos medidas técnicas e organizacionais adequadas para proteger seus dados 
+                                    contra acesso não autorizado, alteração, divulgação ou destruição. No entanto, 
+                                    nenhum sistema é 100% seguro, e não podemos garantir segurança absoluta.
+                                </p>
+                            </section>
+
+                            <!-- User Rights -->
+                            <section class="mb-5">
+                                <h2 class="h4 text-primary mb-3">6. Seus Direitos (LGPD)</h2>
+                                
+                                <p class="mb-3">
+                                    Conforme a Lei Geral de Proteção de Dados (LGPD), você tem os seguintes direitos:
+                                </p>
+
+                                <div class="accordion" id="rightsAccordion">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#right1">
+                                                <i class="bi bi-info-circle me-2"></i>Confirmação e Acesso
+                                            </button>
+                                        </h2>
+                                        <div id="right1" class="accordion-collapse collapse" data-bs-parent="#rightsAccordion">
+                                            <div class="accordion-body">
+                                                Confirmar se tratamos seus dados e ter acesso às informações que possuímos sobre você.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#right2">
+                                                <i class="bi bi-pencil me-2"></i>Correção
+                                            </button>
+                                        </h2>
+                                        <div id="right2" class="accordion-collapse collapse" data-bs-parent="#rightsAccordion">
+                                            <div class="accordion-body">
+                                                Solicitar a correção de dados incompletos, inexatos ou desatualizados.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#right3">
+                                                <i class="bi bi-trash me-2"></i>Eliminação
+                                            </button>
+                                        </h2>
+                                        <div id="right3" class="accordion-collapse collapse" data-bs-parent="#rightsAccordion">
+                                            <div class="accordion-body">
+                                                Solicitar a exclusão de dados desnecessários, excessivos ou tratados em desconformidade com a LGPD.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#right4">
+                                                <i class="bi bi-x-circle me-2"></i>Oposição
+                                            </button>
+                                        </h2>
+                                        <div id="right4" class="accordion-collapse collapse" data-bs-parent="#rightsAccordion">
+                                            <div class="accordion-body">
+                                                Opor-se ao tratamento em casos de descumprimento da LGPD ou para finalidades não necessárias.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="alert alert-info mt-3">
+                                    <p class="mb-1">
+                                        <strong>Para exercer seus direitos:</strong>
+                                    </p>
+                                    <p class="mb-0">
+                                        Entre em contato conosco através do email 
+                                        <a href="mailto:privacidade@ubatubareage.com.br">privacidade@ubatubareage.com.br</a> 
+                                        ou pelo formulário de contato.
+                                    </p>
+                                </div>
+                            </section>
+
+                            <!-- Cookies -->
+                            <section class="mb-5">
+                                <h2 class="h4 text-primary mb-3">7. Cookies e Tecnologias Similares</h2>
+                                
+                                <p>Utilizamos cookies para:</p>
+                                <ul class="mb-3">
+                                    <li><strong>Essenciais:</strong> Funcionamento básico do site</li>
+                                    <li><strong>Analytics:</strong> Compreender como você usa o site</li>
+                                    <li><strong>Funcionalidade:</strong> Lembrar suas preferências</li>
+                                    <li><strong>Marketing:</strong> Personalizar conteúdo (quando aplicável)</li>
+                                </ul>
+                                
+                                <p>
+                                    Você pode controlar cookies através das configurações do seu navegador. 
+                                    Note que desabilitar cookies pode afetar a funcionalidade do site.
+                                </p>
+                            </section>
+
+                            <!-- Data Retention -->
+                            <section class="mb-5">
+                                <h2 class="h4 text-primary mb-3">8. Retenção de Dados</h2>
+                                
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>Tipo de Dado</th>
+                                                <th>Período de Retenção</th>
+                                                <th>Justificativa</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Newsletter</td>
+                                                <td>Até o descadastro</td>
+                                                <td>Comunicação contínua</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Formulários de Contato</td>
+                                                <td>2 anos</td>
+                                                <td>Histórico de comunicação</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Denúncias</td>
+                                                <td>5 anos</td>
+                                                <td>Investigação jornalística</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Analytics</td>
+                                                <td>26 meses</td>
+                                                <td>Padrão Google Analytics</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </section>
+
+                            <!-- Children -->
+                            <section class="mb-5">
+                                <h2 class="h4 text-primary mb-3">9. Proteção de Menores</h2>
+                                
+                                <div class="alert alert-warning">
+                                    <h6 class="alert-heading">
+                                        <i class="bi bi-exclamation-triangle me-2"></i>Importante
+                                    </h6>
+                                    <p class="mb-0">
+                                        Nosso site não é direcionado a menores de 13 anos. Não coletamos 
+                                        intencionalmente dados de crianças. Se você é pai/mãe/responsável 
+                                        e acredita que seu filho forneceu dados, entre em contato conosco.
+                                    </p>
+                                </div>
+                            </section>
+
+                            <!-- Updates -->
+                            <section class="mb-5">
+                                <h2 class="h4 text-primary mb-3">10. Alterações nesta Política</h2>
+                                
+                                <p>
+                                    Podemos atualizar esta Política de Privacidade ocasionalmente. Mudanças significativas 
+                                    serão comunicadas através do site e, quando apropriado, por email. 
+                                    A data da última atualização está sempre indicada no topo desta página.
+                                </p>
+                            </section>
+
+                            <!-- Contact -->
+                            <section>
+                                <h2 class="h4 text-primary mb-3">11. Contato</h2>
+                                
+                                <div class="card bg-light">
+                                    <div class="card-body">
+                                        <h6 class="card-title">📞 Dúvidas sobre Privacidade?</h6>
+                                        <p class="card-text">
+                                            Se você tiver dúvidas sobre esta Política de Privacidade ou sobre 
+                                            como tratamos seus dados, entre em contato:
+                                        </p>
+                                        <ul class="list-unstyled mb-0">
+                                            <li><i class="bi bi-envelope me-2"></i><strong>Email:</strong> privacidade@ubatubareage.com.br</li>
+                                            <li><i class="bi bi-telephone me-2"></i><strong>WhatsApp:</strong> (12) 99999-9999</li>
+                                            <li><i class="bi bi-geo-alt me-2"></i><strong>Endereço:</strong> Ubatuba - SP</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Navigation -->
+                    <div class="d-flex justify-content-between mt-4">
+                        <a href="termos.html" class="btn btn-outline-secondary">
+                            <i class="bi bi-arrow-left me-2"></i>Termos de Uso
+                        </a>
+                        <a href="contato.html" class="btn btn-primary">
+                            Fale Conosco <i class="bi bi-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-main bg-dark text-white py-5 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <img src="https://uploads.intercept.com.br/2023/07/SvRNnl9L-header.svg" 
+                         alt="Ubatuba Reage" 
+                         class="footer-logo mb-3"
+                         width="140" 
+                         height="44"
+                         style="filter: brightness(0) invert(1);">
+                    <p class="text-light">
+                        Movimento cidadão independente. A voz da comunidade de Ubatuba.
+                    </p>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h6 class="text-white mb-3">Legal</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="privacidade.html" class="text-light text-decoration-none">Privacidade</a></li>
+                        <li><a href="termos.html" class="text-light text-decoration-none">Termos de Uso</a></li>
+                        <li><a href="contato.html" class="text-light text-decoration-none">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h6 class="text-white mb-3">Categorias</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="categoria/cidade.html" class="text-light text-decoration-none">Cidade</a></li>
+                        <li><a href="categoria/meio-ambiente.html" class="text-light text-decoration-none">Meio Ambiente</a></li>
+                        <li><a href="categoria/cultura.html" class="text-light text-decoration-none">Cultura</a></li>
+                        <li><a href="categoria/praias.html" class="text-light text-decoration-none">Praias</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h6 class="text-white mb-3">Redes Sociais</h6>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-light"><i class="bi bi-facebook fs-5"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-instagram fs-5"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-twitter fs-5"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-whatsapp fs-5"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-4">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0 text-muted">
+                        © 2024 Ubatuba Reage. Todos os direitos reservados.
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="apoie.html" class="btn btn-primary">Apoie nosso movimento</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom Scripts -->
+    <script src="script.js"></script>
+    <script src="js/analytics.js"></script>
+    
+    <!-- Netlify Identity -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>
