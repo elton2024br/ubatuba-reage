@@ -12,7 +12,102 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 1000);
         }
     }
+    
+    // Proteger páginas admin
+    protectAdminPages();
 });
+
+// Função para proteger páginas admin
+function protectAdminPages() {
+    const isAdminPage = window.location.pathname.includes('/admin') || 
+                       window.location.pathname.includes('dashboard.html');
+    
+    if (isAdminPage) {
+        console.log('🔒 Página admin detectada, verificando permissões...');
+        
+        if (window.netlifyIdentity) {
+            const user = netlifyIdentity.currentUser();
+            if (!user) {
+                console.log('❌ Usuário não logado, redirecionando para login...');
+                netlifyIdentity.open('login');
+                return;
+            }
+            
+            // Verifica se o usuário tem role admin
+            checkUserRole(user);
+        }
+    }
+}
+
+// Função para verificar role do usuário
+async function checkUserRole(user) {
+    try {
+        // Busca informações detalhadas do usuário
+        const response = await fetch('/.netlify/identity/user', {
+            headers: {
+                'Authorization': `Bearer ${user.token.access_token}`
+            }
+        });
+        
+        if (response.ok) {
+            const userData = await response.json();
+            console.log('👤 Dados do usuário:', userData);
+            
+            if (userData.role === 'admin') {
+                console.log('✅ Usuário é admin, acesso permitido!');
+                showAdminContent();
+            } else {
+                console.log('❌ Usuário não é admin, acesso negado!');
+                denyAccess();
+            }
+        } else {
+            // Fallback: verifica se é o email admin
+            if (user.email === 'angycalm@powerscrews.com') {
+                console.log('✅ Email admin detectado, acesso permitido!');
+                showAdminContent();
+            } else {
+                console.log('❌ Usuário não autorizado, acesso negado!');
+                denyAccess();
+            }
+        }
+    } catch (error) {
+        console.error('Erro ao verificar role:', error);
+        // Fallback: verifica se é o email admin
+        if (user.email === 'angycalm@powerscrews.com') {
+            console.log('✅ Email admin detectado, acesso permitido!');
+            showAdminContent();
+        } else {
+            console.log('❌ Usuário não autorizado, acesso negado!');
+            denyAccess();
+        }
+    }
+}
+
+// Função para mostrar conteúdo admin
+function showAdminContent() {
+    console.log('🎉 Conteúdo admin liberado!');
+    // Remove qualquer bloqueio de conteúdo
+    const adminBlocks = document.querySelectorAll('.admin-block');
+    adminBlocks.forEach(block => block.style.display = 'block');
+}
+
+// Função para negar acesso
+function denyAccess() {
+    console.log('🚫 Acesso negado ao painel admin!');
+    
+    // Mostra mensagem de erro
+    const body = document.body;
+    body.innerHTML = `
+        <div style="text-align: center; padding: 50px; font-family: Arial, sans-serif;">
+            <h1 style="color: #dc3545;">🚫 Acesso Negado</h1>
+            <p>Você não tem permissão para acessar esta página.</p>
+            <p>Apenas administradores podem acessar o painel.</p>
+            <button onclick="window.history.back()" style="padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                Voltar
+            </button>
+        </div>
+    `;
+}
 
 // Função para tentar fazer login
 async function tryLogin() {
@@ -116,11 +211,18 @@ if (window.netlifyIdentity) {
     netlifyIdentity.on('login', user => {
         console.log('✅ Usuário logado com sucesso:', user);
         if (user) {
-            console.log('🎉 Login completo! Redirecionando para admin...');
-            // Redireciona para o painel admin
-            setTimeout(() => {
-                window.location.href = '/admin/';
-            }, 1000);
+            console.log('🎉 Login completo!');
+            
+            // Se estiver em página admin, verifica permissões
+            if (window.location.pathname.includes('/admin') || 
+                window.location.pathname.includes('dashboard.html')) {
+                checkUserRole(user);
+            } else {
+                // Redireciona para o painel admin
+                setTimeout(() => {
+                    window.location.href = '/admin/';
+                }, 1000);
+            }
         }
     });
     
@@ -140,6 +242,12 @@ if (window.netlifyIdentity) {
         console.log('Netlify Identity inicializado:', user);
         if (user) {
             console.log('✅ Usuário já logado:', user.email);
+            
+            // Se estiver em página admin, verifica permissões
+            if (window.location.pathname.includes('/admin') || 
+                window.location.pathname.includes('dashboard.html')) {
+                checkUserRole(user);
+            }
         } else {
             console.log('🔒 Nenhum usuário logado');
         }
