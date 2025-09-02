@@ -6,13 +6,18 @@
   NODE_VERSION = "18"
 
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
+  from = "/admin"
+  to = "/admin/index.html"
   status = 200
 
 [[redirects]]
-  from = "/admin"
-  to = "/admin.html"
+  from = "/admin/*"
+  to = "/admin/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
   status = 200
 
 [context.production.environment]

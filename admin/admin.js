@@ -65,12 +65,15 @@ class AdminPanel {
             }
         });
         
-        // Profile and settings dropdown - CORRIGIDO
+        // Profile and settings dropdown (robust event delegation)
         document.addEventListener('click', (e) => {
-            if (e.target.matches('[data-action="profile"]')) {
+            const actionEl = e.target.closest && e.target.closest('[data-action]');
+            if (!actionEl) return;
+            const action = actionEl.getAttribute('data-action');
+            if (action === 'profile') {
                 e.preventDefault();
                 this.showProfileModal();
-            } else if (e.target.matches('[data-action="settings"]')) {
+            } else if (action === 'settings') {
                 e.preventDefault();
                 this.navigateToSection('settings');
             }
