@@ -12,7 +12,7 @@ class AnalyticsSystem {
             DEBUG: window.location.hostname === 'localhost' || window.location.hostname.includes('127.0.0.1')
         };
         
-        this.init();
+        // A inicialização agora é chamada externamente pelo script principal
     }
     
     init() {
@@ -24,6 +24,15 @@ class AnalyticsSystem {
         this.loadGoogleTagManager();
         this.loadGoogleAnalytics();
         this.setupCustomEvents();
+        this.trackTimeOnPage(); // Inicia o tracking de tempo na página
+
+        // Adicionar noscript para GTM no body
+        if (!document.getElementById('gtm-noscript')) {
+            const noscript = document.createElement('noscript');
+            noscript.id = 'gtm-noscript';
+            noscript.innerHTML = `<iframe src="https://www.googletagmanager.com/ns.html?id=${this.config.GTM_ID}" height="0" width="0" style="display:none;visibility:hidden"></iframe>`;
+            document.body.insertBefore(noscript, document.body.firstChild);
+        }
         
         console.log('📊 Analytics inicializado');
     }
@@ -48,7 +57,7 @@ class AnalyticsSystem {
         document.head.appendChild(script);
         
         script.onload = () => {
-            window.gtag = window.gtag || function(){dataLayer.push(arguments);};
+            window.gtag = window.gtag || function(){data_layer.push(arguments);};
             gtag('js', new Date());
             gtag('config', this.config.GA_MEASUREMENT_ID, {
                 // Configurações de privacidade LGPD/GDPR
@@ -71,10 +80,6 @@ class AnalyticsSystem {
         
         // Track scroll depth
         this.trackScrollDepth();
-        
-        // Track newsletter signups (já implementado nos formulários)
-        // Track search queries (já implementado no sistema de busca)
-        // Track form submissions (já implementado nos formulários)
     }
     
     trackPageView(page_title = document.title, page_location = window.location.href) {
@@ -99,7 +104,6 @@ class AnalyticsSystem {
             const href = link.getAttribute('href');
             if (!href) return;
             
-            // Check if it's an outbound link
             const isOutbound = href.startsWith('http') && 
                               !href.includes(window.location.hostname);
             
@@ -120,7 +124,6 @@ class AnalyticsSystem {
             const href = link.getAttribute('href');
             if (!href) return;
             
-            // Check if it's a download link
             const downloadExtensions = ['.pdf', '.doc', '.docx', '.xls', '.xlsx', '.zip', '.rar'];
             const isDownload = downloadExtensions.some(ext => href.toLowerCase().includes(ext));
             
@@ -169,7 +172,6 @@ class AnalyticsSystem {
         });
     }
     
-    // Método público para tracking de eventos customizados
     trackEvent(action, event_name, parameters = {}) {
         if (this.config.DEBUG) {
             console.log('📊 Custom event:', { action, event_name, parameters });
@@ -183,7 +185,6 @@ class AnalyticsSystem {
             });
         }
         
-        // Também envia para GTM dataLayer
         if (window.dataLayer) {
             window.dataLayer.push({
                 event: event_name,
@@ -193,7 +194,6 @@ class AnalyticsSystem {
         }
     }
     
-    // Método para tracking de conversões
     trackConversion(conversion_id, conversion_value = null) {
         if (this.config.DEBUG) {
             console.log('📊 Conversion:', { conversion_id, conversion_value });
@@ -206,14 +206,13 @@ class AnalyticsSystem {
         });
     }
     
-    // Método para tracking de tempo de permanência
     trackTimeOnPage() {
         const startTime = Date.now();
         
         const sendTimeOnPage = () => {
             const timeSpent = Math.round((Date.now() - startTime) / 1000);
             
-            if (timeSpent > 10) { // Só trackea se ficou mais de 10 segundos
+            if (timeSpent > 10) {
                 this.trackEvent('engagement', 'time_on_page', {
                     time_spent: timeSpent,
                     page_url: window.location.pathname
@@ -221,10 +220,8 @@ class AnalyticsSystem {
             }
         };
         
-        // Track quando sair da página
         window.addEventListener('beforeunload', sendTimeOnPage);
         
-        // Track a cada 30 segundos para sessões longas
         setInterval(() => {
             const timeSpent = Math.round((Date.now() - startTime) / 1000);
             if (timeSpent > 0 && timeSpent % 30 === 0) {
@@ -236,7 +233,6 @@ class AnalyticsSystem {
         }, 1000);
     }
     
-    // Configuração de consentimento (LGPD/GDPR)
     setConsentMode(analytics_consent = 'denied', ad_consent = 'denied') {
         if (typeof gtag !== 'undefined') {
             gtag('consent', 'update', {
@@ -246,12 +242,9 @@ class AnalyticsSystem {
         }
     }
     
-    // Método para opt-out do usuário
     optOut() {
-        // Disable Google Analytics
         window[`ga-disable-${this.config.GA_MEASUREMENT_ID}`] = true;
         
-        // Remove tracking cookies
         document.cookie = '_ga=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
         document.cookie = '_ga_' + this.config.GA_MEASUREMENT_ID.split('-')[1] + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
         
@@ -259,23 +252,4 @@ class AnalyticsSystem {
     }
 }
 
-// Inicializar quando DOM estiver pronto
-document.addEventListener('DOMContentLoaded', () => {
-    window.UbatubaAnalytics = new AnalyticsSystem();
-    
-    // Track time on page
-    window.UbatubaAnalytics.trackTimeOnPage();
-});
-
-// Adicionar noscript para GTM no body (será inserido via HTML)
-document.addEventListener('DOMContentLoaded', () => {
-    if (document.getElementById('gtm-noscript')) return;
-    
-    const noscript = document.createElement('noscript');
-    noscript.id = 'gtm-noscript';
-    noscript.innerHTML = `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe>`;
-    document.body.insertBefore(noscript, document.body.firstChild);
-});
-
-// Exportar para uso externo
-window.AnalyticsSystem = AnalyticsSystem;
+export default new AnalyticsSystem();

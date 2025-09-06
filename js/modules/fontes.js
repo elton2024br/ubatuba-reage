@@ -1,3 +1,5 @@
+import analytics from './analytics.js';
+
 /**
  * SISTEMA DE FONTES - UBATUBA REAGE
  * Formulário de denúncias com validação e segurança
@@ -6,6 +8,8 @@
 class FontesSystem {
     constructor() {
         this.form = document.getElementById('fontesForm');
+        if (!this.form) return;
+
         this.submitBtn = document.getElementById('submitBtn');
         this.successMessage = document.getElementById('successMessage');
         this.errorMessage = document.getElementById('errorMessage');
@@ -25,8 +29,6 @@ class FontesSystem {
         this.descricaoCount = document.getElementById('descricaoCount');
         
         this.isSubmitting = false;
-        
-        this.init();
     }
     
     init() {
@@ -389,14 +391,12 @@ class FontesSystem {
     
     trackSubmission(formData) {
         // Google Analytics
-        if (typeof gtag !== 'undefined') {
-            gtag('event', 'denuncia_submitted', {
-                'tipo': formData.tipo,
-                'urgencia': formData.urgencia,
-                'anonimo': formData.anonimo,
-                'value': 1
-            });
-        }
+        analytics.trackEvent('submit', 'denuncia_submitted', {
+            'tipo': formData.tipo,
+            'urgencia': formData.urgencia,
+            'anonimo': formData.anonimo,
+            'value': 1
+        });
         
         console.log('📊 Denúncia tracked:', {
             tipo: formData.tipo,
@@ -414,10 +414,4 @@ class FontesSystem {
     }
 }
 
-// Initialize when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-    new FontesSystem();
-});
-
-// Export for external use
-window.FontesSystem = FontesSystem;
+export default FontesSystem;

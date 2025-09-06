@@ -1,3 +1,5 @@
+import analytics from './analytics.js';
+
 /**
  * NEWSLETTER SYSTEM - UBATUBA REAGE
  * Sistema de inscrição com validação e integração
@@ -6,14 +8,14 @@
 class NewsletterSystem {
     constructor() {
         this.form = document.getElementById('newsletterForm');
+        if (!this.form) return;
+
         this.emailInput = document.getElementById('newsletterEmail');
         this.submitBtn = document.getElementById('newsletterBtn');
         this.successMessage = document.getElementById('newsletterSuccess');
         this.errorMessage = document.getElementById('newsletterError');
         
         this.isSubmitting = false;
-        
-        this.init();
     }
     
     init() {
@@ -254,19 +256,15 @@ class NewsletterSystem {
     
     trackSubscription(email) {
         // Google Analytics
-        if (typeof gtag !== 'undefined') {
-            gtag('event', 'newsletter_signup', {
-                'method': 'homepage_form',
-                'value': 1
-            });
-        }
+        analytics.trackEvent('submit', 'newsletter_signup', {
+            'method': 'homepage_form',
+            'value': 1
+        });
         
-        // Facebook Pixel (se configurado)
-        if (typeof fbq !== 'undefined') {
-            fbq('track', 'Subscribe', {
-                source: 'newsletter'
-            });
-        }
+        // Facebook Pixel (se configurado) - genérico para o nosso sistema de analytics
+        analytics.trackEvent('submit', 'fb_pixel_subscribe', {
+            'source': 'newsletter'
+        });
         
         console.log('📊 Newsletter signup tracked:', email);
     }
@@ -280,10 +278,4 @@ class NewsletterSystem {
     }
 }
 
-// Initialize when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-    new NewsletterSystem();
-});
-
-// Export for external use
-window.NewsletterSystem = NewsletterSystem;
+export default NewsletterSystem;

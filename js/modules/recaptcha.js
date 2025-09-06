@@ -13,12 +13,6 @@ class RecaptchaSystem {
         
         this.isLoaded = false;
         this.pendingCallbacks = [];
-        
-        if (this.config.ENABLED) {
-            this.init();
-        } else {
-            console.log('🔒 reCAPTCHA desabilitado em localhost');
-        }
     }
     
     init() {
@@ -217,32 +211,4 @@ class RecaptchaSystem {
     }
 }
 
-// Instância global
-window.UbatubaRecaptcha = new RecaptchaSystem();
-
-// Auto-attach para formulários com data-recaptcha
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('form[data-recaptcha]').forEach(form => {
-        const action = form.getAttribute('data-recaptcha-action') || 'submit';
-        
-        window.UbatubaRecaptcha.attachToForm(`#${form.id}`, {
-            action: action,
-            onSuccess: (token) => {
-                console.log('✅ reCAPTCHA validado para formulário:', form.id);
-            },
-            onError: (error) => {
-                console.error('❌ Erro reCAPTCHA no formulário:', form.id, error);
-                // Mostra erro para o usuário
-                const errorDiv = form.querySelector('.recaptcha-error') || document.createElement('div');
-                errorDiv.className = 'alert alert-danger mt-2 recaptcha-error';
-                errorDiv.textContent = 'Erro de segurança. Tente novamente.';
-                if (!form.querySelector('.recaptcha-error')) {
-                    form.appendChild(errorDiv);
-                }
-            }
-        });
-    });
-});
-
-// Export
-window.RecaptchaSystem = RecaptchaSystem;
+export default new RecaptchaSystem();

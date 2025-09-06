@@ -1,3 +1,5 @@
+import analytics from './analytics.js';
+
 /**
  * COMMENTS SYSTEM - UBATUBA REAGE
  * Sistema de comentários com Disqus + fallback local
@@ -13,17 +15,16 @@ class CommentsSystem {
         };
         
         this.localComments = this.loadLocalComments();
-        this.init();
+        this.container = document.getElementById('comments-section');
     }
     
     init() {
-        const commentContainer = document.getElementById('comments-section');
-        if (!commentContainer) return;
+        if (!this.container) return;
         
         if (this.config.ENABLE_DISQUS) {
-            this.initDisqus(commentContainer);
+            this.initDisqus();
         } else if (this.config.ENABLE_LOCAL_COMMENTS) {
-            this.initLocalComments(commentContainer);
+            this.initLocalComments();
         }
         
         console.log('💬 Sistema de comentários inicializado');
@@ -36,14 +37,14 @@ class CommentsSystem {
     }
     
     // DISQUS Integration
-    initDisqus(container) {
+    initDisqus() {
         const pageUrl = window.location.href;
         const pageId = this.getPageId();
         
         // Create Disqus container
         const disqusDiv = document.createElement('div');
         disqusDiv.id = 'disqus_thread';
-        container.appendChild(disqusDiv);
+        this.container.appendChild(disqusDiv);
         
         // Configure Disqus
         window.disqus_config = function () {
@@ -71,17 +72,17 @@ class CommentsSystem {
     }
     
     // Local Comments System
-    initLocalComments(container) {
+    initLocalComments() {
         const pageId = this.getPageId();
         
-        container.innerHTML = `
+        this.container.innerHTML = `
             <div class="comments-local">
                 <div class="comments-header d-flex justify-content-between align-items-center mb-4">
                     <h3 class="h5 fw-bold text-white mb-0">
                         <i class="bi bi-chat-left-text me-2"></i>
                         Comentários (<span id="comments-count">${this.getCommentsCount(pageId)}</span>)
                     </h3>
-                    <button class="btn btn-primary btn-sm" onclick="UbatubaComments.toggleCommentForm()">
+                    <button class="btn btn-primary btn-sm" data-action="toggle-comment-form">
                         <i class="bi bi-plus-lg me-1"></i>
                         Comentar
                     </button>
@@ -128,7 +129,7 @@ class CommentsSystem {
                                         </label>
                                     </div>
                                     <div class="d-flex gap-2">
-                                        <button type="button" class="btn btn-outline-light btn-sm" onclick="UbatubaComments.toggleCommentForm()">
+                                        <button type="button" class="btn btn-outline-light btn-sm" data-action="toggle-comment-form">
                                             Cancelar
                                         </button>
                                         <button type="submit" class="btn btn-primary btn-sm">
@@ -152,7 +153,7 @@ class CommentsSystem {
                 
                 <!-- Load More -->
                 <div id="load-more-comments" class="text-center mt-4" style="display: none;">
-                    <button class="btn btn-outline-light btn-sm" onclick="UbatubaComments.loadMoreComments()">
+                    <button class="btn btn-outline-light btn-sm" data-action="load-more-comments">
                         <i class="bi bi-arrow-down me-1"></i>
                         Carregar mais comentários
                     </button>
@@ -164,8 +165,29 @@ class CommentsSystem {
     }
     
     setupLocalCommentsEvents() {
+        // Event delegation for actions
+        this.container.addEventListener('click', (e) => {
+            const button = e.target.closest('[data-action]');
+            if (!button) return;
+
+            const action = button.dataset.action;
+            const commentId = button.closest('.comment')?.dataset.commentId;
+
+            switch (action) {
+                case 'toggle-comment-form':
+                    this.toggleCommentForm();
+                    break;
+                case 'load-more-comments':
+                    this.loadMoreComments();
+                    break;
+                case 'reply-to-comment':
+                    this.replyToComment(commentId);
+                    break;
+            }
+        });
+
         // Form submission
-        const form = document.getElementById('local-comment-form');
+        const form = this.container.querySelector('#local-comment-form');
         if (form) {
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
@@ -174,8 +196,8 @@ class CommentsSystem {
         }
         
         // Character counter
-        const textarea = document.getElementById('comment-text');
-        const counter = document.getElementById('comment-char-count');
+        const textarea = this.container.querySelector('#comment-text');
+        const counter = this.container.querySelector('#comment-char-count');
         if (textarea && counter) {
             textarea.addEventListener('input', () => {
                 counter.textContent = textarea.value.length;
@@ -185,17 +207,17 @@ class CommentsSystem {
     }
     
     async submitLocalComment() {
-        const form = document.getElementById('local-comment-form');
+        const form = this.container.querySelector('#local-comment-form');
         const submitBtn = form.querySelector('button[type="submit"]');
         const btnText = submitBtn.querySelector('.btn-text');
         const btnLoading = submitBtn.querySelector('.btn-loading');
         
         // Get form data
         const formData = {
-            name: document.getElementById('comment-name').value.trim(),
-            email: document.getElementById('comment-email').value.trim(),
-            text: document.getElementById('comment-text').value.trim(),
-            notify: document.getElementById('comment-notify').checked,
+            name: this.container.querySelector('#comment-name').value.trim(),
+            email: this.container.querySelector('#comment-email').value.trim(),
+            text: this.container.querySelector('#comment-text').value.trim(),
+            notify: this.container.querySelector('#comment-notify').checked,
             pageId: this.getPageId(),
             timestamp: new Date().toISOString(),
             id: Date.now()
@@ -230,11 +252,10 @@ class CommentsSystem {
             this.showCommentSuccess();
             
             // Track event
-            if (window.UbatubaAnalytics) {
-                window.UbatubaAnalytics.trackEvent('engagement', 'comment_posted', {
-                    page_id: formData.pageId
-                });
-            }
+            analytics.trackEvent('engagement', 'comment_posted', {
+                page_id: formData.pageId
+            });
+
         } catch (error) {
             console.error('Erro ao enviar comentário:', error);
             alert('Erro ao enviar comentário. Tente novamente.');
@@ -289,7 +310,7 @@ class CommentsSystem {
         const avatar = this.generateAvatar(comment.name);
         
         return `
-            <div class="comment mb-4 p-3 rounded" style="background: #111; border: 1px solid rgba(255,255,255,0.08);">
+            <div class="comment mb-4 p-3 rounded" data-comment-id="${comment.id}" style="background: #111; border: 1px solid rgba(255,255,255,0.08);">
                 <div class="d-flex gap-3">
                     <div class="comment-avatar">
                         <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center text-white fw-bold" style="width: 40px; height: 40px;">
@@ -302,7 +323,7 @@ class CommentsSystem {
                                 <strong class="text-white">${this.escapeHtml(comment.name)}</strong>
                                 <small class="text-white-50 ms-2">${timeAgo}</small>
                             </div>
-                            <button class="btn btn-sm btn-outline-light" onclick="UbatubaComments.replyToComment('${comment.id}')">
+                            <button class="btn btn-sm btn-outline-light" data-action="reply-to-comment">
                                 <i class="bi bi-reply me-1"></i>
                                 Responder
                             </button>
@@ -428,12 +449,4 @@ class CommentsSystem {
     }
 }
 
-// Initialize
-document.addEventListener('DOMContentLoaded', () => {
-    if (document.getElementById('comments-section')) {
-        window.UbatubaComments = new CommentsSystem();
-    }
-});
-
-// Export
-window.CommentsSystem = CommentsSystem;
+export default CommentsSystem;

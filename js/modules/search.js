@@ -1,3 +1,5 @@
+import analytics from './analytics.js';
+
 /**
  * SISTEMA DE BUSCA - UBATUBA REAGE
  * Busca local com JSON, filtros e ordenação
@@ -20,11 +22,11 @@ class SearchSystem {
         this.noResults = document.getElementById('noResults');
         this.initialState = document.getElementById('initialState');
         this.loadingState = document.getElementById('loadingState');
-        
-        this.init();
     }
     
     async init() {
+        if (!this.searchForm) return; // Não inicializa se não estiver na página de busca
+
         try {
             // Load articles data
             await this.loadArticles();
@@ -275,13 +277,11 @@ class SearchSystem {
                 const articleId = e.target.closest('.search-result-link').dataset.articleId;
                 
                 // Analytics tracking
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'search_result_click', {
-                        'search_term': this.currentQuery,
-                        'article_id': articleId,
-                        'result_position': Array.from(document.querySelectorAll('.search-result-link')).indexOf(e.target) + 1
-                    });
-                }
+                analytics.trackEvent('click', 'search_result_click', {
+                    'search_term': this.currentQuery,
+                    'article_id': articleId,
+                    'result_position': Array.from(document.querySelectorAll('.search-result-link')).indexOf(e.target) + 1
+                });
                 
                 console.log(`🔍 Clique no resultado: ${articleId} para busca: "${this.currentQuery}"`);
             });
@@ -317,12 +317,4 @@ class SearchSystem {
     }
 }
 
-// Initialize when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-    if (document.getElementById('searchForm')) {
-        new SearchSystem();
-    }
-});
-
-// Export for potential external use
-window.SearchSystem = SearchSystem;
+export default SearchSystem;
